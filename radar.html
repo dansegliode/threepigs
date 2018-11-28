@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Three Little Pigs</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Arapey" rel="stylesheet">
+	<link href="main.css" rel="stylesheet">
+</head>
+<body>
+	<div id="functionBasedDelay">
+		<div class="line">
+			<div class="beam am"><div class="beam am"><div class="beam am"></div></div></div>
+
+
+		</div>
+	</div>
+	<script type="text/javascript">
+	// http://jsfiddle.net/f5EMT/1/
+	var mousePosition;
+	var offset = [24,24];
+	var div;
+
+	div = document.getElementsByClassName("line");
+
+
+
+
+
+	document.addEventListener('mouseup', function(event) {
+		event.preventDefault();
+
+		mousePosition = {
+
+			x : event.clientX,
+			y : event.clientY
+
+		};
+		div[0].style.left = (mousePosition.x + offset[0]) + 'px';
+		div[0].style.top  = (mousePosition.y + offset[1]) + 'px';
+
+	});
+
+
+
+	var functionBasedDelay = anime({
+		targets: '#functionBasedDelay .am ',
+		scale:2,
+		opacity:0,
+		loop: true,
+		elasticity: 0,
+		duration:3000,
+		delay: function(el, i, l) {
+			return i * 100;
+		}
+	});
+	</script>
+</body>
+</html>
