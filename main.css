@@ -20,9 +20,9 @@ body {
     
 }
 
-#fade1, #fade2, #fade3, #fade4, #fade5 {
+#fade1, #fade2, #fade3, #fade4, #fade5, #fade6 {
     opacity: 1;
-    transition: 1s opacity cubic-bezier(0.400, 0.015, 0.530, 1.015);
+    transition: 1s all cubic-bezier(0.400, 0.015, 0.530, 1.015);
 }
 
 #fade2 {
@@ -41,7 +41,11 @@ body {
     transition-delay: 1s;
 }
 
-#fade1.fade, #fade2.fade, #fade3.fade, #fade4.fade, #fade5.fade {
+#fade6 {
+    transition-delay: 2.5s;
+}
+
+#fade1.fade, #fade2.fade, #fade3.fade, #fade4.fade, #fade5.fade, #fade6.fade {
     opacity: 0;
     transition: none;
 }
@@ -160,8 +164,7 @@ img:hover {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
-
+    justify-content: center;
 }
 
 .storyPara{
@@ -169,8 +172,16 @@ img:hover {
 	line-height: 200%;
 	/* text-shadow: 0px 0px 5px #666; */
 	font-weight: 100;
-	font-size: 1.5rem;
-	text-align: center;
+	font-size: 1.2rem;
+    text-align: center;
+    
+    transform: translateY(-90px);
+    transition: 2s ease-in !important; 
+}
+
+.storyFadeOut{
+    transform: translateY(0px);
+    transition: none;
 }
 
 .scrollIcon{

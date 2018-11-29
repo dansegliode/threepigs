@@ -33,7 +33,6 @@
 
 	<script>
 		document.addEventListener("DOMContentLoaded", function(event) {
-    		console.log("DOM fully loaded and parsed");
 			document.getElementById('fade1').className += ' fade';
 			document.getElementById('fade2').className += ' fade';
 			document.getElementById('fade3').className += ' fade';
@@ -47,6 +46,14 @@
 			$('#fade3').removeClass('fade');
 			$('#fade4').removeClass('fade');
 			$('#fade5').removeClass('fade');
+		});
+
+		$("a").click(function (e) {
+            e.preventDefault();
+            $link = $(this).attr("href");
+            $("body").fadeOut(500, function () {
+                window.location = $link;
+            });
 		});
 	</script>
 </body>
