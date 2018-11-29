@@ -16,7 +16,34 @@ div {
 }
 
 body {
-	margin: 0;
+    margin: 0;
+    
+}
+
+#fade1, #fade2, #fade3, #fade4, #fade5 {
+    opacity: 1;
+    transition: 1s opacity cubic-bezier(0.400, 0.015, 0.530, 1.015);
+}
+
+#fade2 {
+    transition-delay: .2s;
+}
+
+#fade3 {
+    transition-delay: .5s;
+}
+
+#fade4 {
+    transition-delay: .8s;
+}
+
+#fade5 {
+    transition-delay: 1s;
+}
+
+#fade1.fade, #fade2.fade, #fade3.fade, #fade4.fade, #fade5.fade {
+    opacity: 0;
+    transition: none;
 }
 
 h1 {
@@ -171,6 +198,4 @@ img:hover {
 	transform-origin: center center;
 	box-shadow: 0px 0px 5px #FDE56B;
 }
-body{
-	background-color: black;
-}
+

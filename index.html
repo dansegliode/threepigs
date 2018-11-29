@@ -13,9 +13,9 @@
 	<div class="wrapper">
 		<div></div>
 		<div>
-			<h1>three little pigs</h1>
+			<h1><span id="fade1">three</span> <span id="fade2">little</span> <span id="fade3">pigs</span></h1>
 
-			<section class="beginButton">
+			<section id="fade4" class="beginButton">
 				<a href="scene_intro.html" class="begin">
 					<img src="imgs/begin.svg" alt="play button">
 					<div class="beginText">begin</div>
@@ -23,7 +23,7 @@
 			</section>
 
 		</div>
-		<nav>
+		<nav id="fade5">
 			<p class="gray">skip:</p>
 			<a id="pigOne" href=""><p>pig one</p></a>
 			<a id="pigTwo" href=""><p>pig two</p></a>
@@ -32,6 +32,22 @@
 	</div>
 
 	<script>
+		document.addEventListener("DOMContentLoaded", function(event) {
+    		console.log("DOM fully loaded and parsed");
+			document.getElementById('fade1').className += ' fade';
+			document.getElementById('fade2').className += ' fade';
+			document.getElementById('fade3').className += ' fade';
+			document.getElementById('fade4').className += ' fade';
+			document.getElementById('fade5').className += ' fade';
+  		});
+		
+		$(function() {
+    		$('#fade1').removeClass('fade');
+			$('#fade2').removeClass('fade');
+			$('#fade3').removeClass('fade');
+			$('#fade4').removeClass('fade');
+			$('#fade5').removeClass('fade');
+		});
 	</script>
 </body>
 </html>
