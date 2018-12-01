@@ -23,12 +23,12 @@
 					<div class="material"><img src="imgs/blank.png"></div>
 					<div class="material" id="hay1"><img src="imgs/hay.svg"></div>
 				</div>
-				<div class="pigMat" id="fade1">
+				<div class="pigMat" id="fade2">
 					<div class="pig" id="pig2"><img src="imgs/pig.svg"></div>
 					<div class="material"><img src="imgs/blank.png"></div>
 					<div class="material" id="stick1"><img src="imgs/stick.svg"></div>
 				</div>
-				<div class="pigMat" id="fade1">
+				<div class="pigMat" id="fade3">
 					<div class="pig" id="pig3"><img src="imgs/pig.svg"></div>
 					<div class="material"><img src="imgs/blank.png"></div>
 					<div class="material" id="brick1"><img src="imgs/brick.svg"></div>
@@ -43,41 +43,35 @@
 	<script>
 	document.addEventListener("DOMContentLoaded", function (event) {
 		document.getElementById('fade1').className += ' fade';
-		// document.getElementById('fade2').className += ' fade';
-
+		document.getElementById('fade2').className += ' fade';
+		document.getElementById('fade3').className += ' fade';
 		$('.storyPara').addClass('storyFadeOut');
 	});
 
 	$(function () {
 		$('#fade1').removeClass('fade');
-		// $('#fade2').removeClass('fade');
+		$('#fade2').removeClass('fade');
+		$('#fade3').removeClass('fade');
 
 	});
-	// if (dragula([document.querySelector('#pig1'), document.querySelector('#mat1')])) {
-	// 	console.log("yes")
-	// }
-	// on mouse press get current object and make its pos equal to mousx and y
-	$('.pig').click(function(event) {
-		var status = $(this).attr('id');
-		// $('#' + status).css({position:"absolute", left:clientX,top:clientY});
-		event.offsetX = 100;
-		event.offsetY= 100;
-		// console.log(event.clientX);
-		// console.log(event.clientY);
-	});
+
+	// drag and drop code
 	let mouseXPos;
 	let mouseYPos;
 	let pigTarget;
 	let stickTargetFilled = false;
 	let hayTargetFilled = false;
 	let brickTargetFilled = false;
+	let pig1Draggable = true;
+	let pig2Draggable = true;
+	let pig3Draggable = true;
 	let brickX;
 	let brickY;
 	let stickX;
 	let stickY;
 	let hayX;
 	let hayY;
-
+	let bricksPig, haysPig, sticksPig;
 
 	document.addEventListener("dragover", function(event) {
 		mouseXPos = event.x;
@@ -100,14 +94,27 @@
 
 	document.addEventListener("drag", function(event) {
 		// console.log("dragging");
-		if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
-			$(`${pigTarget}` ).css({position:"absolute", left:mouseXPos-50,top:mouseYPos-50});
+		if ((pigTarget == "#pig1") && pig1Draggable) {
+			if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
+				$(`${pigTarget}` ).css({position:"absolute", left:mouseXPos-50,top:mouseYPos-50});
+			}
 		}
-		// console.log(mouseXPos);
-		// console.log(mouseYPos);
-		// set object to mouse
+
+		if ((pigTarget == "#pig2") && pig2Draggable) {
+			if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
+				$(`${pigTarget}` ).css({position:"absolute", left:mouseXPos-50,top:mouseYPos-50});
+			}
+		}
+
+		if ((pigTarget == "#pig3") && pig3Draggable) {
+			if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
+				$(`${pigTarget}` ).css({position:"absolute", left:mouseXPos-50,top:mouseYPos-50});
+			}
+		}
+
 		hayX = $("#hay1")[0].offsetLeft;
 		hayY = $("#hay1")[0].offsetTop;
+
 		if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
 			if (!hayTargetFilled) {
 				if (((mouseXPos>(hayX-25))&&(mouseXPos<(hayX+125))) && ((mouseYPos>(hayY-25))&&(mouseYPos<(hayY+125)))) {
@@ -127,6 +134,7 @@
 				}
 			}
 		}
+
 		brickX = $("#brick1")[0].offsetLeft;
 		brickY = $("#brick1")[0].offsetTop;
 		if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
@@ -143,18 +151,43 @@
 		console.log("drag end");
 		if (((mouseXPos>(brickX-25))&&(mouseXPos<(brickX+125))) && ((mouseYPos>(brickY-25))&&(mouseYPos<(brickY+125)))) {
 			brickTargetFilled = true;
+			bricksPig = pigTarget;
+			if (bricksPig == "#pig1") {
+				pig1Draggable = false;
+			}else if (bricksPig == "#pig2") {
+				pig2Draggable = false;
+			}else if (bricksPig == "#pig3") {
+				pig3Draggable = false;
+			}
+
 		}
 
 		if (((mouseXPos>(stickX-25))&&(mouseXPos<(stickX+125))) && ((mouseYPos>(stickY-25))&&(mouseYPos<(stickY+125)))) {
 			stickTargetFilled = true;
+			sticksPig = pigTarget;
+			if (sticksPig == "#pig1") {
+				pig1Draggable = false;
+			}else if (sticksPig == "#pig2") {
+				pig2Draggable = false;
+			}else if (sticksPig == "#pig3") {
+				pig3Draggable = false;
+			}
 		}
 
 		if (((mouseXPos>(hayX-25))&&(mouseXPos<(hayX+125))) && ((mouseYPos>(hayY-25))&&(mouseYPos<(hayY+125)))) {
 			hayTargetFilled = true;
+			haysPig = pigTarget;
+			if (haysPig == "#pig1") {
+				pig1Draggable = false;
+			}else if (haysPig == "#pig2") {
+				pig2Draggable = false;
+			}else if (haysPig == "#pig3") {
+				pig3Draggable = false;
+			}
 		}
 		// release object on spot and animate
 	});
-	console.log($("#hay1"));
+	// console.log($("#hay1"));
 	// dragula([document.querySelector('#pig1'), document.querySelector('#mat1')]);
 	// dragula([document.getElementById(pig1), document.getElementById(mat1)]);
 	// setTimeout(function () {
