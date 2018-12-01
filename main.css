@@ -255,3 +255,8 @@ a:hover {
 	justify-content: center;
 	align-items: center;
 }
+
+#tutLine img {
+	height: inherit;
+	width: 100%;
+}
