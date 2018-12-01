@@ -144,6 +144,7 @@
 		let hayAnimationPlayed = false,
 			stickAnimationPlayed = false,
 			brickAnimationPlayed = false;
+		let lineRemoved = false;
 
 
 		hayX = $("#hay1")[0].offsetLeft;
@@ -322,27 +323,34 @@
 				playRadar(hayX, hayY, "#FFA800");
 				hayAnimationPlayed = true;
 
-				var element = document.body;
+				if(!lineRemoved){
+					var element = document.body;
 				var child = document.getElementById("tutLine");
 				element.removeChild(child);
-
-				console.log("animation");
+				lineRemoved = true;
+				}
 			}
 			if (stickTargetFilled && !stickAnimationPlayed) {
 				playRadar(stickX, stickY, "#4EF24B");
 				stickAnimationPlayed = true;
 
+				if(!lineRemoved){
 								var element = document.body;
 				var child = document.getElementById("tutLine");
 				element.removeChild(child);
+				lineRemoved = true;
+				}
 			}
 			if (brickTargetFilled && !brickAnimationPlayed) {
 				playRadar(brickX, brickY, "#DF5542");
 				brickAnimationPlayed = true;
 
+if(!lineRemoved){
 								var element = document.body;
 				var child = document.getElementById("tutLine");
 				element.removeChild(child);
+				lineRemoved = true;
+}
 			}
 
 		});

@@ -243,10 +243,15 @@ a:hover {
 .material img{
 	height: 90px;
 	width:90px;
+	pointer-events: none;
 }
 
 .material {
-	z-index: 2;
+	z-index: -1;
+}
+
+#hay1, #stick1,  #brick1 {
+	z-index: 2 !important;
 }
 
 .pigsAndMaterials{
@@ -255,6 +260,7 @@ a:hover {
 	justify-content: center;
 	align-items: center;
 }
+
 
 #tutLine img {
 	height: inherit;
