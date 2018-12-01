@@ -3,10 +3,6 @@
 	font-family: 'Didot', 'Arapey', Times, serif;
 }
 
-div {
-
-}
-
 .wrapper {
 	height: 100vh;
 	display: flex;
@@ -16,38 +12,37 @@ div {
 }
 
 body {
-    margin: 0;
-    
+	margin: 0;
 }
 
 #fade1, #fade2, #fade3, #fade4, #fade5, #fade6 {
-    opacity: 1;
-    transition: 1s all cubic-bezier(0.400, 0.015, 0.530, 1.015);
+	opacity: 1;
+	transition: 1s all cubic-bezier(0.400, 0.015, 0.530, 1.015);
 }
 
 #fade2 {
-    transition-delay: .2s;
+	transition-delay: .2s;
 }
 
 #fade3 {
-    transition-delay: .5s;
+	transition-delay: .5s;
 }
 
 #fade4 {
-    transition-delay: .8s;
+	transition-delay: .8s;
 }
 
 #fade5 {
-    transition-delay: 1s;
+	transition-delay: 1s;
 }
 
 #fade6 {
-    transition-delay: 2.5s;
+	transition-delay: 2.5s;
 }
 
 #fade1.fade, #fade2.fade, #fade3.fade, #fade4.fade, #fade5.fade, #fade6.fade {
-    opacity: 0;
-    transition: none;
+	opacity: 0;
+	transition: none;
 }
 
 h1 {
@@ -145,11 +140,11 @@ a:hover {
 	transform: translate(-3px, -50px);
 }
 
-img {
+.playButton {
 	transition: .3s;
 }
 
-img:hover {
+.playButton:hover {
 	transform: scale(1.1);
 }
 
@@ -164,7 +159,7 @@ img:hover {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-    justify-content: center;
+	justify-content: center;
 }
 
 .storyPara{
@@ -173,15 +168,15 @@ img:hover {
 	/* text-shadow: 0px 0px 5px #666; */
 	font-weight: 100;
 	font-size: 1.2rem;
-    text-align: center;
-    
-    transform: translateY(-90px);
-    transition: 2s ease-in !important; 
+	text-align: center;
+	font-family: "PT Serif", "Didot", serif;
+	transform: translateY(-90px);
+	transition: 2s ease-in !important;
 }
 
 .storyFadeOut{
-    transform: translateY(0px);
-    transition: none;
+	transform: translateY(0px);
+	transition: none;
 }
 
 .scrollIcon{
@@ -210,3 +205,38 @@ img:hover {
 	box-shadow: 0px 0px 5px #FDE56B;
 }
 
+/* scene all pigs */
+.allPigsWrapper{
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+
+}
+.allPigMatGroups{
+	display: flex;
+	justify-content:space-between;
+	width: 40vw;
+	height: 40vh;
+	flex-direction: row;
+}
+.pig img{
+	height: 90px;
+	width:90px;
+}
+.pigMat{
+	display: flex;
+	justify-content:space-between;
+	flex-direction: column;
+
+}
+.material img{
+	height: 90px;
+	width:90px;
+}
+
+.pigsAndMaterials{
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Three Little Pigs</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Arapey" rel="stylesheet">
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js'></script>
+	<link src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.css'></link>
+	<link href="main.css" rel="stylesheet">
+</head>
+
+<body href="index.html">
+	<div class="pigsAndMaterials">
+		<div class="allPigsWrapper">
+
+			<div class="allPigMatGroups">
+				<div class="pigMat" id="fade1">
+					<div class="pig" id="pig1"><img src="imgs/pig.svg"></div>
+					<div class="material"><img src="imgs/blank.png"></div>
+					<div class="material" id="hay1"><img src="imgs/hay.svg"></div>
+				</div>
+				<div class="pigMat" id="fade1">
+					<div class="pig" id="pig2"><img src="imgs/pig.svg"></div>
+					<div class="material"><img src="imgs/blank.png"></div>
+					<div class="material" id="stick1"><img src="imgs/stick.svg"></div>
+				</div>
+				<div class="pigMat" id="fade1">
+					<div class="pig" id="pig3"><img src="imgs/pig.svg"></div>
+					<div class="material"><img src="imgs/blank.png"></div>
+					<div class="material" id="brick1"><img src="imgs/brick.svg"></div>
+				</div>
+
+
+			</div>
+
+
+		</div>
+	</div>
+	<script>
+	document.addEventListener("DOMContentLoaded", function (event) {
+		document.getElementById('fade1').className += ' fade';
+		// document.getElementById('fade2').className += ' fade';
+
+		$('.storyPara').addClass('storyFadeOut');
+	});
+
+	$(function () {
+		$('#fade1').removeClass('fade');
+		// $('#fade2').removeClass('fade');
+
+	});
+	// if (dragula([document.querySelector('#pig1'), document.querySelector('#mat1')])) {
+	// 	console.log("yes")
+	// }
+	// on mouse press get current object and make its pos equal to mousx and y
+	$('.pig').click(function(event) {
+		var status = $(this).attr('id');
+		// $('#' + status).css({position:"absolute", left:clientX,top:clientY});
+		event.offsetX = 100;
+		event.offsetY= 100;
+		// console.log(event.clientX);
+		// console.log(event.clientY);
+	});
+	let mouseXPos;
+	let mouseYPos;
+	let pigTarget;
+	let stickTargetFilled = false;
+	let hayTargetFilled = false;
+	let brickTargetFilled = false;
+	let brickX;
+	let brickY;
+	let stickX;
+	let stickY;
+	let hayX;
+	let hayY;
+
+
+	document.addEventListener("dragover", function(event) {
+		mouseXPos = event.x;
+		mouseYPos = event.y;
+		// console.log(event.x);
+		// console.log(event.y);
+	});
+
+	document.addEventListener("dragstart", function(event) {
+
+		pigTarget = "#" + event.path[1].id;
+		event.dataTransfer.setData("text/plain", event.target.id);
+		var img = new Image();
+		img.src = 'imgs/blank.png';
+		event.dataTransfer.setDragImage(img, 0, 0);
+		// console.log(event.path[1].clientLeft);
+		console.log(pigTarget);
+		// get object
+	});
+
+	document.addEventListener("drag", function(event) {
+		// console.log("dragging");
+		if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
+			$(`${pigTarget}` ).css({position:"absolute", left:mouseXPos-50,top:mouseYPos-50});
+		}
+		// console.log(mouseXPos);
+		// console.log(mouseYPos);
+		// set object to mouse
+		hayX = $("#hay1")[0].offsetLeft;
+		hayY = $("#hay1")[0].offsetTop;
+		if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
+			if (!hayTargetFilled) {
+				if (((mouseXPos>(hayX-25))&&(mouseXPos<(hayX+125))) && ((mouseYPos>(hayY-25))&&(mouseYPos<(hayY+125)))) {
+					$(`${pigTarget}` ).css({position:"absolute", left:hayX,top:hayY});
+
+				}
+			}
+		}
+
+		stickX = $("#stick1")[0].offsetLeft;
+		stickY = $("#stick1")[0].offsetTop;
+		if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
+			if (!stickTargetFilled) {
+				if (((mouseXPos>(stickX-25))&&(mouseXPos<(stickX+125))) && ((mouseYPos>(stickY-25))&&(mouseYPos<(stickY+125)))) {
+					$(`${pigTarget}` ).css({position:"absolute", left:stickX,top:stickY});
+
+				}
+			}
+		}
+		brickX = $("#brick1")[0].offsetLeft;
+		brickY = $("#brick1")[0].offsetTop;
+		if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
+			if (!brickTargetFilled) {
+				if (((mouseXPos>(brickX-25))&&(mouseXPos<(brickX+125))) && ((mouseYPos>(brickY-25))&&(mouseYPos<(brickY+125)))) {
+					$(`${pigTarget}` ).css({position:"absolute", left:brickX,top:brickY});
+
+				}
+			}
+		}
+	});
+
+	document.addEventListener("dragend", function(event) {
+		console.log("drag end");
+		if (((mouseXPos>(brickX-25))&&(mouseXPos<(brickX+125))) && ((mouseYPos>(brickY-25))&&(mouseYPos<(brickY+125)))) {
+			brickTargetFilled = true;
+		}
+
+		if (((mouseXPos>(stickX-25))&&(mouseXPos<(stickX+125))) && ((mouseYPos>(stickY-25))&&(mouseYPos<(stickY+125)))) {
+			stickTargetFilled = true;
+		}
+
+		if (((mouseXPos>(hayX-25))&&(mouseXPos<(hayX+125))) && ((mouseYPos>(hayY-25))&&(mouseYPos<(hayY+125)))) {
+			hayTargetFilled = true;
+		}
+		// release object on spot and animate
+	});
+	console.log($("#hay1"));
+	// dragula([document.querySelector('#pig1'), document.querySelector('#mat1')]);
+	// dragula([document.getElementById(pig1), document.getElementById(mat1)]);
+	// setTimeout(function () {
+	// 	document.addEventListener("wheel", function (e) {
+	// 		$('.storyPara').removeClass('storyFadeOut');
+	// 		e.preventDefault();
+	// 		$link = $("body").attr("href");
+	// 		$("body").fadeOut(500, function () {
+	// 			window.location = $link;
+	// 		});
+	// 	});
+	// }, 2700);
+	</script>
+</body>
+
+</html>
