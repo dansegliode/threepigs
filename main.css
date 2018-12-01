@@ -13,6 +13,8 @@
 
 body {
 	margin: 0;
+	overflow: hidden;
+	user-select: none;
 }
 
 #fade1, #fade2, #fade3, #fade4, #fade5, #fade6 {
@@ -78,9 +80,8 @@ a {
 	flex-direction: column;
 	align-items: center;
 }
-.begin{
-	/* transition: .3s; */
-}
+
+
 .begin:hover img{
 	transform: scale(1.1);
 }
@@ -189,12 +190,11 @@ a:hover {
 /* Radar Animation */
 .line{
 	transform: scale(-.5);
-	position: absolute;
-	top: 600px;
-	left: 600px;
+	position: relative;
+
 }
 .beam{
-	position: absolute;
+	position: relative;
 	width: 100px;
 	height: 100px;
 	background-color: rgba(0, 0, 0, 0);
@@ -205,12 +205,23 @@ a:hover {
 	box-shadow: 0px 0px 5px #FDE56B;
 }
 
+/* boing animation */
+.boing {
+	animation: boing .4s ease-in-out;
+}
+
+@keyframes boing {
+	0% {transform: scale(1);}
+	33% {transform: scale(1.1);}
+	66% {transform: scale(.9);}
+	100% {transform: scale(1);}
+}
+
 /* scene all pigs */
 .allPigsWrapper{
 	display: flex;
 	justify-content: center;
 	flex-direction: row;
-
 }
 .allPigMatGroups{
 	display: flex;
@@ -227,11 +238,15 @@ a:hover {
 	display: flex;
 	justify-content:space-between;
 	flex-direction: column;
-
 }
+
 .material img{
 	height: 90px;
 	width:90px;
+}
+
+.material {
+	z-index: 2;
 }
 
 .pigsAndMaterials{

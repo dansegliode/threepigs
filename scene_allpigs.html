@@ -8,8 +8,7 @@
 	<title>Three Little Pigs</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Arapey" rel="stylesheet">
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js'></script>
-	<link src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.css'></link>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
 	<link href="main.css" rel="stylesheet">
 </head>
 
@@ -41,6 +40,53 @@
 		</div>
 	</div>
 	<script>
+
+	// radar animation function
+	function playRadar(x, y, color){
+
+		let xPos = x-6;
+		let yPos = y-6;
+		console.log(xPos+" "+yPos);
+		$("body").prepend('	<div id="radarEffect"><div id="functionBasedDelay"><div class="line"><div class="beam am"><div class="beam am"><div class="beam am"></div></div></div></div></div></div>');
+
+		$(".beam").css('box-shadow', '0px 0px 5px ' + `${color}` );
+		$(".beam").css('border', '2px solid '+ `${color}`);
+
+		$("#radarEffect").css({position:"absolute", left:xPos,top:yPos});
+
+		// var div;
+
+		// div = document.getElementsByClassName("line");
+
+		//ending deletion
+
+
+		var functionBasedDelay = anime({
+			targets: '#functionBasedDelay .am ',
+			scale:2,
+			opacity:0,
+			loop: false,
+			elasticity: 0,
+			duration:3000,
+			delay: function(el, i, l) {
+				return i * 100;
+			}
+		});
+
+		setTimeout(function(){
+			var element = document.body;
+			var child = document.getElementById("radarEffect");
+			element.removeChild(child);
+		}, 1000);
+	}
+
+	function scaleAnimation(obj){
+		$(`${obj}`).addClass('boing');
+		setTimeout(function() {
+			$(`${obj}`).removeClass('boing');
+		}, 400);
+	}
+
 	document.addEventListener("DOMContentLoaded", function (event) {
 		document.getElementById('fade1').className += ' fade';
 		document.getElementById('fade2').className += ' fade';
@@ -72,12 +118,11 @@
 	let hayX;
 	let hayY;
 	let bricksPig, haysPig, sticksPig;
+	let hayAnimationPlayed = false, stickAnimationPlayed = false, brickAnimationPlayed = false;
 
 	document.addEventListener("dragover", function(event) {
 		mouseXPos = event.x;
 		mouseYPos = event.y;
-		// console.log(event.x);
-		// console.log(event.y);
 	});
 
 	document.addEventListener("dragstart", function(event) {
@@ -87,13 +132,15 @@
 		var img = new Image();
 		img.src = 'imgs/blank.png';
 		event.dataTransfer.setDragImage(img, 0, 0);
-		// console.log(event.path[1].clientLeft);
+
+		scaleAnimation(pigTarget);
+
 		console.log(pigTarget);
-		// get object
+
 	});
 
 	document.addEventListener("drag", function(event) {
-		// console.log("dragging");
+
 		if ((pigTarget == "#pig1") && pig1Draggable) {
 			if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
 				$(`${pigTarget}` ).css({position:"absolute", left:mouseXPos-50,top:mouseYPos-50});
@@ -119,7 +166,7 @@
 			if (!hayTargetFilled) {
 				if (((mouseXPos>(hayX-25))&&(mouseXPos<(hayX+125))) && ((mouseYPos>(hayY-25))&&(mouseYPos<(hayY+125)))) {
 					$(`${pigTarget}` ).css({position:"absolute", left:hayX,top:hayY});
-
+					scaleAnimation(pigTarget);
 				}
 			}
 		}
@@ -130,7 +177,7 @@
 			if (!stickTargetFilled) {
 				if (((mouseXPos>(stickX-25))&&(mouseXPos<(stickX+125))) && ((mouseYPos>(stickY-25))&&(mouseYPos<(stickY+125)))) {
 					$(`${pigTarget}` ).css({position:"absolute", left:stickX,top:stickY});
-
+					scaleAnimation(pigTarget);
 				}
 			}
 		}
@@ -141,13 +188,16 @@
 			if (!brickTargetFilled) {
 				if (((mouseXPos>(brickX-25))&&(mouseXPos<(brickX+125))) && ((mouseYPos>(brickY-25))&&(mouseYPos<(brickY+125)))) {
 					$(`${pigTarget}` ).css({position:"absolute", left:brickX,top:brickY});
-
+					scaleAnimation(pigTarget);
 				}
 			}
 		}
 	});
 
 	document.addEventListener("dragend", function(event) {
+
+
+
 		console.log("drag end");
 		if (((mouseXPos>(brickX-25))&&(mouseXPos<(brickX+125))) && ((mouseYPos>(brickY-25))&&(mouseYPos<(brickY+125)))) {
 			brickTargetFilled = true;
@@ -159,7 +209,7 @@
 			}else if (bricksPig == "#pig3") {
 				pig3Draggable = false;
 			}
-
+			checkForEnd();
 		}
 
 		if (((mouseXPos>(stickX-25))&&(mouseXPos<(stickX+125))) && ((mouseYPos>(stickY-25))&&(mouseYPos<(stickY+125)))) {
@@ -172,6 +222,7 @@
 			}else if (sticksPig == "#pig3") {
 				pig3Draggable = false;
 			}
+			checkForEnd();
 		}
 
 		if (((mouseXPos>(hayX-25))&&(mouseXPos<(hayX+125))) && ((mouseYPos>(hayY-25))&&(mouseYPos<(hayY+125)))) {
@@ -184,22 +235,44 @@
 			}else if (haysPig == "#pig3") {
 				pig3Draggable = false;
 			}
+			checkForEnd();
 		}
 		// release object on spot and animate
+		console.log("haytarget" + hayTargetFilled);
+		if (hayTargetFilled && !hayAnimationPlayed) {
+			playRadar(hayX, hayY, "#FFA800");
+			hayAnimationPlayed = true;
+			console.log("animation");
+		}
+		if (stickTargetFilled && !stickAnimationPlayed) {
+			playRadar(stickX, stickY, "#4EF24B");
+			stickAnimationPlayed = true;
+		}
+		if (brickTargetFilled && !brickAnimationPlayed) {
+			playRadar(brickX, brickY, "#DF5542");
+			brickAnimationPlayed = true;
+		}
+
 	});
-	// console.log($("#hay1"));
-	// dragula([document.querySelector('#pig1'), document.querySelector('#mat1')]);
-	// dragula([document.getElementById(pig1), document.getElementById(mat1)]);
-	// setTimeout(function () {
-	// 	document.addEventListener("wheel", function (e) {
-	// 		$('.storyPara').removeClass('storyFadeOut');
-	// 		e.preventDefault();
-	// 		$link = $("body").attr("href");
-	// 		$("body").fadeOut(500, function () {
-	// 			window.location = $link;
-	// 		});
-	// 	});
-	// }, 2700);
+
+
+
+	function checkForEnd() {
+		if ((pig1Draggable == false) && (pig2Draggable == false) && (pig3Draggable == false) ) {
+			$link = $("body").attr("href");
+			console.log("finished");
+			setTimeout(function() {
+				$("body").fadeOut(500, function () {
+				window.location = $link;
+			});
+			}, 600)
+
+		}
+	}
+
+
+
+
 	</script>
 </body>
 
