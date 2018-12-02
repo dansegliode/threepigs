@@ -14,45 +14,27 @@
 
 <body href="scene_pig1story.html">
 
-	<div class="pigsAndMaterials">
-		<div class="allPigsWrapper">
-
-			<div class="allPigMatGroups">
-				<div class="pigMat" id="fade1">
-					<div class="pig" id="pig1"><img src="imgs/pig.svg"></div>
-					<div class="material"><img src="imgs/blank.png"></div>
-					<div class="material" id="hay1"><img src="imgs/hay.svg"></div>
-				</div>
-				<div class="pigMat" id="fade2">
-					<div class="pig" id="pig2"><img src="imgs/pig.svg"></div>
-					<div class="material"><img src="imgs/blank.png"></div>
-					<div class="material" id="stick1"><img src="imgs/stick.svg"></div>
-				</div>
-				<div class="pigMat" id="fade3">
-					<div class="pig" id="pig3"><img src="imgs/pig.svg"></div>
-					<div class="material"><img src="imgs/blank.png"></div>
-					<div class="material" id="brick1"><img src="imgs/brick.svg"></div>
-				</div>
-			</div>
-
-
+	<div class="grayMatCenter">
+		<div id="fade1" class="grayMatGroup">
+			<div class="grayMat" id="staticMat1"><img src="imgs/grayhay.svg" alt="gray hay"></div>
+			<div class="grayMat" id="staticMat2"><img src="imgs/grayhay.svg" alt="gray hay"></div>
+			<div class="grayMat" id="staticMat3"><img src="imgs/grayhay.svg" alt="gray hay"></div>
 		</div>
-		<p id="fade6" class="instructionText">
-			drag the pigs to their materials <br>
-		</p>
+		<div class="pigChar"><img src="imgs/pig.svg" alt="pig character"></div>
 	</div>
 
+	<div class="normalMat normalPos1" id="draggableMat1" ><img id="fade2" src="imgs/goldhay.svg" alt="gold hay"></div>
+	<div class="normalMat normalPos2" id="draggableMat2" ><img id="fade3" src="imgs/goldhay.svg" alt="gold hay"></div>
+	<div class="normalMat normalPos3" id="draggableMat3" ><img id="fade4" src="imgs/goldhay.svg" alt="gold hay"></div>
+
+
 	<script>
-
-
-
-
 
 	// radar animation function
 	function playRadar(x, y, color) {
 
-		let xPos = x - 6;
-		let yPos = y - 6;
+		let xPos = x -25;
+		let yPos = y +25;
 		console.log(xPos + " " + yPos);
 		$("body").prepend(
 			'	<div id="radarEffect"><div id="functionBasedDelay"><div class="line"><div class="beam am"><div class="beam am"><div class="beam am"></div></div></div></div></div></div>'
@@ -98,7 +80,7 @@
 		document.getElementById('fade1').className += ' fade';
 		document.getElementById('fade2').className += ' fade';
 		document.getElementById('fade3').className += ' fade';
-		document.getElementById('fade6').className += ' fade';
+		document.getElementById('fade4').className += ' fade';
 		$('.storyPara').addClass('storyFadeOut');
 	});
 
@@ -106,7 +88,7 @@
 		$('#fade1').removeClass('fade');
 		$('#fade2').removeClass('fade');
 		$('#fade3').removeClass('fade');
-		$('#fade6').removeClass('fade');
+		$('#fade4').removeClass('fade');
 
 	});
 
@@ -132,12 +114,12 @@
 	brickAnimationPlayed = false;
 
 	function updateMatCoords(){
-		hayX = $("#hay1")[0].offsetLeft;
-		hayY = $("#hay1")[0].offsetTop;
-		stickX = $("#stick1")[0].offsetLeft;
-		stickY = $("#stick1")[0].offsetTop;
-		brickX = $("#brick1")[0].offsetLeft;
-		brickY = $("#brick1")[0].offsetTop;
+		hayX = $("#staticMat1")[0].offsetLeft;
+		hayY = $("#staticMat1")[0].offsetTop;
+		stickX = $("#staticMat2")[0].offsetLeft;
+		stickY = $("#staticMat2")[0].offsetTop;
+		brickX = $("#staticMat3")[0].offsetLeft;
+		brickY = $("#staticMat3")[0].offsetTop;
 	}
 
 	updateMatCoords();
@@ -168,77 +150,78 @@
 
 	document.addEventListener("drag", function (event) {
 		updateMatCoords();
-		if ((pigTarget == "#pig1") && pig1Draggable) {
-			if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
+
+		if ((pigTarget == "#draggableMat1") && pig1Draggable) {
+			if ((pigTarget != "#staticMat1") && (pigTarget != "#staticMat2") && (pigTarget != "#staticMat3")) {
 				$(`${pigTarget}`).css({
 					position: "absolute",
-					left: mouseXPos - 50,
-					top: mouseYPos - 50
+					left: mouseXPos - 40,
+					top: mouseYPos - 60
 				});
 			}
 		}
 
-		if ((pigTarget == "#pig2") && pig2Draggable) {
-			if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
+		if ((pigTarget == "#draggableMat2") && pig2Draggable) {
+			if ((pigTarget != "#staticMat1") && (pigTarget != "#staticMat2") && (pigTarget != "#staticMat3")) {
 				$(`${pigTarget}`).css({
 					position: "absolute",
-					left: mouseXPos - 50,
-					top: mouseYPos - 50
+					left: mouseXPos - 40,
+					top: mouseYPos - 60
 				});
 			}
 		}
 
-		if ((pigTarget == "#pig3") && pig3Draggable) {
-			if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
+		if ((pigTarget == "#draggableMat3") && pig3Draggable) {
+			if ((pigTarget != "#staticMat1") && (pigTarget != "#staticMat2") && (pigTarget != "#staticMat3")) {
 				$(`${pigTarget}`).css({
 					position: "absolute",
-					left: mouseXPos - 50,
-					top: mouseYPos - 50
+					left: mouseXPos - 40,
+					top: mouseYPos - 60
 				});
 			}
 		}
 
 
-		if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
+		if ((pigTarget != "#staticMat1") && (pigTarget != "#staticMat2") && (pigTarget != "#staticMat3")) {
 			if (!hayTargetFilled) {
 				if (((mouseXPos > (hayX - 25)) && (mouseXPos < (hayX + 125))) && ((mouseYPos > (hayY - 25)) && (mouseYPos < (
 					hayY + 125)))) {
 						$(`${pigTarget}`).css({
 							position: "absolute",
-							left: hayX,
-							top: hayY
+							left: hayX -15,
+							top: hayY -15
 						});
 						scaleAnimation(pigTarget);
 					}
 				}
 			}
 
-			stickX = $("#stick1")[0].offsetLeft;
-			stickY = $("#stick1")[0].offsetTop;
-			if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
+			stickX = $("#staticMat2")[0].offsetLeft;
+			stickY = $("#staticMat2")[0].offsetTop;
+			if ((pigTarget != "#staticMat1") && (pigTarget != "#staticMat2") && (pigTarget != "#staticMat3")) {
 				if (!stickTargetFilled) {
 					if (((mouseXPos > (stickX - 25)) && (mouseXPos < (stickX + 125))) && ((mouseYPos > (stickY - 25)) && (mouseYPos <
 						(stickY + 125)))) {
 							$(`${pigTarget}`).css({
 								position: "absolute",
-								left: stickX,
-								top: stickY
+								left: stickX -15,
+								top: stickY -15
 							});
 							scaleAnimation(pigTarget);
 						}
 					}
 				}
 
-				brickX = $("#brick1")[0].offsetLeft;
-				brickY = $("#brick1")[0].offsetTop;
-				if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
+				brickX = $("#staticMat3")[0].offsetLeft;
+				brickY = $("#staticMat3")[0].offsetTop;
+				if ((pigTarget != "#staticMat1") && (pigTarget != "#staticMat2") && (pigTarget != "#staticMat3")) {
 					if (!brickTargetFilled) {
 						if (((mouseXPos > (brickX - 25)) && (mouseXPos < (brickX + 125))) && ((mouseYPos > (brickY - 25)) && (mouseYPos <
 							(brickY + 125)))) {
 								$(`${pigTarget}`).css({
 									position: "absolute",
-									left: brickX,
-									top: brickY
+									left: brickX -15 ,
+									top: brickY - 15
 								});
 								scaleAnimation(pigTarget);
 							}
@@ -255,11 +238,11 @@
 						(brickY + 125)))) {
 							brickTargetFilled = true;
 							bricksPig = pigTarget;
-							if (bricksPig == "#pig1") {
+							if (bricksPig == "#draggableMat1") {
 								pig1Draggable = false;
-							} else if (bricksPig == "#pig2") {
+							} else if (bricksPig == "#draggableMat2") {
 								pig2Draggable = false;
-							} else if (bricksPig == "#pig3") {
+							} else if (bricksPig == "#draggableMat3") {
 								pig3Draggable = false;
 							}
 							checkForEnd();
@@ -269,11 +252,11 @@
 							(stickY + 125)))) {
 								stickTargetFilled = true;
 								sticksPig = pigTarget;
-								if (sticksPig == "#pig1") {
+								if (sticksPig == "#draggableMat1") {
 									pig1Draggable = false;
-								} else if (sticksPig == "#pig2") {
+								} else if (sticksPig == "#draggableMat2") {
 									pig2Draggable = false;
-								} else if (sticksPig == "#pig3") {
+								} else if (sticksPig == "#draggableMat3") {
 									pig3Draggable = false;
 								}
 								checkForEnd();
@@ -283,11 +266,11 @@
 								125)))) {
 									hayTargetFilled = true;
 									haysPig = pigTarget;
-									if (haysPig == "#pig1") {
+									if (haysPig == "#draggableMat1") {
 										pig1Draggable = false;
-									} else if (haysPig == "#pig2") {
+									} else if (haysPig == "#draggableMat2") {
 										pig2Draggable = false;
-									} else if (haysPig == "#pig3") {
+									} else if (haysPig == "#draggableMat3") {
 										pig3Draggable = false;
 									}
 									checkForEnd();
@@ -301,13 +284,13 @@
 
 								}
 								if (stickTargetFilled && !stickAnimationPlayed) {
-									playRadar(stickX, stickY, "#4EF24B");
+									playRadar(stickX, stickY, "#FFA800");
 									stickAnimationPlayed = true;
 
 
 								}
 								if (brickTargetFilled && !brickAnimationPlayed) {
-									playRadar(brickX, brickY, "#DF5542");
+									playRadar(brickX, brickY, "#FFA800");
 									brickAnimationPlayed = true;
 
 

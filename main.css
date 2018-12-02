@@ -277,3 +277,56 @@ a:hover {
 	font-size: 1rem;
 	font-family: "PT Serif", "Didot", serif;
 }
+
+/* scene_pig1house */
+
+.grayMatCenter{
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+}
+.grayMatGroup{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content:space-between;
+	height: 60vh;
+
+}
+
+.grayMat img{
+
+}
+
+.normalMat img{
+
+}
+
+.normalPos1{
+	position: absolute;
+	left: 25%;
+	top: 45%;
+}
+
+.normalPos2{
+	position: absolute;
+	left: 70%;
+	top: 15%;
+}
+
+.normalPos3{
+	position: absolute;
+	left: 65%;
+	top: 65%;
+}
+
+.pigChar{
+	position: absolute;
+	right: 30%;
+}
+
+.pigChar img{
+	height: 100px;
+	width: 100px;
+}
