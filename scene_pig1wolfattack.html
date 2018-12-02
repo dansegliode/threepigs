@@ -12,7 +12,7 @@
 	<link href="main.css" rel="stylesheet">
 </head>
 
-<body href="scene_pig1wolf.html" class="blackFade">
+<body href="scene_page2Story" class="blackFade">
 	<div id="content">
 		<div class="grayMatCenter">
 			<div id="fade1" class="grayMatGroup">
@@ -173,6 +173,7 @@
 				if (wolfDraggable) {
 					playRadar(wolfX, wolfY, "#FF0000");
 					wolfDraggable = false;
+					checkForEnd();
 				}
 
 				scaleAnimation(pigTarget);
@@ -185,13 +186,14 @@
 		function checkForEnd() {
 			$link = $("body").attr("href");
 
-			$("body").removeClass("blackFade");
+
 
 			setTimeout(function () {
 				$("#content").fadeOut(500, function () {
+					$("body").removeClass("blackFade");
 					window.location = $link;
 				});
-			}, 2500);
+			}, 2000);
 		}
 		</script>
 	</body>
