@@ -308,7 +308,7 @@ a:hover {
 	align-items: center;
 	justify-content:space-between;
 	height: auto;
-	transition: .3s;
+	pointer-events: none;
 
 }
 
@@ -346,21 +346,26 @@ a:hover {
 	width: 100px;
 }
 
+.grayMat{
+	position: relative;
+
+	transform: translate(0,0);
+	transition: 1.5s ease-out;
+}
+
 .staticMat1Transition {
-	position: absolute;
-	left: 55%;
-	top: 20%;
+	position: relative;
+	transform: translate(5vw,-10vh) rotate(20deg);
 }
 
 .staticMat2Transition {
-	position: absolute;
-	left: 80%;
-	top: 45%;
+	position: relative;
+	transform: rotate(-.45turn);
+	transform: translate(30vw,-1vh) rotate(-75deg);
 }
 
 .staticMat3Transition {
-	position: absolute;
-	left: 65%;
-	top: 70%;
+	position: relative;
+	transform: rotate(.3turn);
+	transform: translate(20vw,10vh) rotate(45deg);
 }
-
