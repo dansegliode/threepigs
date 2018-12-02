@@ -12,7 +12,7 @@
 	<link href="main.css" rel="stylesheet">
 </head>
 
-<body href="scene_page2Story" class="blackFade">
+<body href="scene_pig2story.html" class="blackFade">
 	<div id="content">
 		<div class="grayMatCenter">
 			<div id="fade1" class="grayMatGroup">
@@ -90,22 +90,6 @@
 		piece1.addClass("staticMat1Transition");
 		piece2.addClass("staticMat2Transition");
 		piece3.addClass("staticMat3Transition");
-
-		// $(piece1).css({
-		// 	position: "absolute",
-		// 	left: piece1X + 60,
-		// 	top: piece1Y + 30
-		// });
-		// $(piece2).css({
-		// 	position: "absolute",
-		// 	left: piece2X + 400,
-		// 	top: piece2Y + 10
-		// });
-		// $(piece3).css({
-		// 	position: "absolute",
-		// 	left: piece3X + 150,
-		// 	top: piece3Y + 30
-		// });
 	}
 
 	document.addEventListener("DOMContentLoaded", function (event) {
@@ -143,7 +127,6 @@
 
 			scaleAnimation(pigTarget);
 
-
 	});
 
 	document.addEventListener("drag", function (event) {
@@ -156,7 +139,6 @@
 				top: mouseYPos - 60
 			});
 		}
-
 
 		hayX = $(".grayMatGroup")[0].offsetLeft;
 		hayY = $(".grayMatGroup")[0].offsetTop;
@@ -178,22 +160,22 @@
 
 				scaleAnimation(pigTarget);
 			}
-
-
 		});
 
 
 		function checkForEnd() {
 			$link = $("body").attr("href");
-
-
+		
 
 			setTimeout(function () {
 				$("#content").fadeOut(500, function () {
-					$("body").removeClass("blackFade");
+					
 					window.location = $link;
 				});
-			}, 2000);
+			}, 2400);
+			setTimeout(function() {
+				$("body").removeClass("blackFade");
+			}, 1900);
 		}
 		</script>
 	</body>
