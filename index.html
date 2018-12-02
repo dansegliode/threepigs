@@ -51,7 +51,7 @@
 		$("a").click(function (e) {
             e.preventDefault();
             $link = $(this).attr("href");
-            $("body").fadeOut(500, function () {
+            $(".wrapper").fadeOut(500, function () {
                 window.location = $link;
             });
 		});
