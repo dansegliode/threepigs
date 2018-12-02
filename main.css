@@ -307,15 +307,8 @@ a:hover {
 	flex-direction: column;
 	align-items: center;
 	justify-content:space-between;
-	height: 60vh;
-
-}
-
-.grayMat img{
-
-}
-
-.normalMat img{
+	height: auto;
+	transition: .3s;
 
 }
 
@@ -340,6 +333,7 @@ a:hover {
 .pigChar{
 	position: absolute;
 	right: 30%;
+	z-index: -1;
 }
 
 .wolfChar {
@@ -352,4 +346,21 @@ a:hover {
 	width: 100px;
 }
 
+.staticMat1Transition {
+	position: absolute;
+	left: 55%;
+	top: 20%;
+}
+
+.staticMat2Transition {
+	position: absolute;
+	left: 80%;
+	top: 45%;
+}
+
+.staticMat3Transition {
+	position: absolute;
+	left: 65%;
+	top: 70%;
+}
 

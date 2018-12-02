@@ -16,12 +16,12 @@
 	<div id="content">
 		<div class="grayMatCenter">
 			<div id="fade1" class="grayMatGroup">
-				<div class="grayMat" id="staticMat1"><img src="imgs/goldhay.svg" alt="gold hay"></div>
+				<div class="grayMat " id="staticMat1"><img src="imgs/goldhay.svg" alt="gold hay"></div>
 				<div class="grayMat" id="staticMat2"><img src="imgs/goldhay.svg" alt="gold hay"></div>
 				<div class="grayMat" id="staticMat3"><img src="imgs/goldhay.svg" alt="gold hay"></div>
 			</div>
 			<div class="pigChar" id="fade2"><img src="imgs/pig.svg" alt="pig character"></div>
-			<div class="wolfChar" id="fade3"><img src="imgs/wolf.svg" alt="wolf character"></div>
+			<div class="wolfChar" id="draggableMat1"><img id="fade3" src="imgs/wolf.svg" alt="wolf character"></div>
 		</div>
 
 	</div>
@@ -30,8 +30,8 @@
 		// radar animation function
 		function playRadar(x, y, color) {
 
-			let xPos = x - 25;
-			let yPos = y + 25;
+			let xPos = x;
+			let yPos = y;
 			console.log(xPos + " " + yPos);
 			$("body").prepend(
 				'	<div id="radarEffect"><div id="functionBasedDelay"><div class="line"><div class="beam am"><div class="beam am"><div class="beam am"></div></div></div></div></div></div>'
@@ -48,7 +48,7 @@
 
 			var functionBasedDelay = anime({
 				targets: '#functionBasedDelay .am ',
-				scale: 2,
+				scale: 3,
 				opacity: 0,
 				loop: false,
 				elasticity: 0,
@@ -73,6 +73,41 @@
 			}, 400);
 		}
 
+		function playScatter() {
+			let piece1, piece2, piece3, piece1X, piece1Y, piece2X, piece2Y, piece3X, piece3Y;
+
+			piece1 = $("#staticMat1");
+			piece2 = $("#staticMat2");
+			piece3 = $("#staticMat3");
+
+			piece1X = piece1[0].offsetLeft;
+			piece1Y = piece1[0].offsetTop;
+			piece2X = piece2[0].offsetLeft;
+			piece2Y = piece2[0].offsetTop;
+			piece3X = piece3[0].offsetLeft;
+			piece3Y = piece3[0].offsetTop;
+
+			piece1.addClass("staticMat1Transition");
+			piece2.addClass("staticMat2Transition");
+			piece3.addClass("staticMat3Transition");
+
+			// $(piece1).css({
+			// 	position: "absolute",
+			// 	left: piece1X + 60,
+			// 	top: piece1Y + 30
+			// });
+			// $(piece2).css({
+			// 	position: "absolute",
+			// 	left: piece2X + 400,
+			// 	top: piece2Y + 10
+			// });
+			// $(piece3).css({
+			// 	position: "absolute",
+			// 	left: piece3X + 150,
+			// 	top: piece3Y + 30
+			// });
+		}
+
 		document.addEventListener("DOMContentLoaded", function (event) {
 			document.getElementById('fade1').className += ' fade';
 			document.getElementById('fade2').className += ' fade';
@@ -85,19 +120,80 @@
 			$('#fade3').removeClass('fade');
 		});
 
-		
+		let mouseXPos;
+		let mouseYPos;
+		let pigTarget;
+		let wolfDraggable = true;
+
+		document.addEventListener("dragover", function (event) {
+			//updateMatCoords();
+			mouseXPos = event.x;
+			mouseYPos = event.y;
+		});
+
+
+		var img = new Image();
+		img.src = 'imgs/blank.png';
+
+		document.addEventListener("dragstart", function (event) {
+			//updateMatCoords();
+			pigTarget = "#" + event.path[1].id;
+			event.dataTransfer.setData("text/plain", event.target.id);
+			event.dataTransfer.setDragImage(img, 0, 0);
+
+			scaleAnimation(pigTarget);
+
+			console.log(pigTarget);
+
+		});
+
+		document.addEventListener("drag", function (event) {
+			//updateMatCoords();
+
+			if ((pigTarget == "#draggableMat1") && wolfDraggable) {
+				$(`${pigTarget}`).css({
+					position: "absolute",
+					left: mouseXPos - 40,
+					top: mouseYPos - 60
+				});
+			}
+
+
+			hayX = $(".grayMatGroup")[0].offsetLeft;
+			hayY = $(".grayMatGroup")[0].offsetTop;
+			wolfX = $(".wolfChar")[0].offsetLeft;
+			wolfY = $(".wolfChar")[0].offsetTop;
+
+			if (((mouseXPos > (hayX - 45)) && (mouseXPos < (hayX + 50))) && ((mouseYPos > (hayY - 15)) && (mouseYPos <
+					(hayY + 500)))) {
+				console.log("there they go");
+				if (wolfDraggable) {
+					playScatter();
+
+				}
+				if (wolfDraggable) {
+					playRadar(wolfX, wolfY, "#FF0000");
+					wolfDraggable = false;
+				}
+
+				scaleAnimation(pigTarget);
+			}
+
+
+		});
+
 
 		function checkForEnd() {
-				$link = $("body").attr("href");
+			$link = $("body").attr("href");
 
-				$("body").removeClass("blackFade");
+			$("body").removeClass("blackFade");
 
-				setTimeout(function () {
-					$("#content").fadeOut(500, function () {
-						window.location = $link;
-					});
-				}, 2500);
-			}
+			setTimeout(function () {
+				$("#content").fadeOut(500, function () {
+					window.location = $link;
+				});
+			}, 2500);
+		}
 	</script>
 </body>
 
