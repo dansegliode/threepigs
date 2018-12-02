@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Three Little Pigs</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Arapey" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+	<link href="main.css" rel="stylesheet">
+</head>
+
+<body href="scene_pig1wolf.html" class="blackFade">
+	<div id="content">
+		<div class="grayMatCenter">
+			<div id="fade1" class="grayMatGroup">
+				<div class="grayMat" id="staticMat1"><img src="imgs/goldhay.svg" alt="gold hay"></div>
+				<div class="grayMat" id="staticMat2"><img src="imgs/goldhay.svg" alt="gold hay"></div>
+				<div class="grayMat" id="staticMat3"><img src="imgs/goldhay.svg" alt="gold hay"></div>
+			</div>
+			<div class="pigChar" id="fade2"><img src="imgs/pig.svg" alt="pig character"></div>
+			<div class="wolfChar" id="fade3"><img src="imgs/wolf.svg" alt="wolf character"></div>
+		</div>
+
+	</div>
+
+	<script>
+		// radar animation function
+		function playRadar(x, y, color) {
+
+			let xPos = x - 25;
+			let yPos = y + 25;
+			console.log(xPos + " " + yPos);
+			$("body").prepend(
+				'	<div id="radarEffect"><div id="functionBasedDelay"><div class="line"><div class="beam am"><div class="beam am"><div class="beam am"></div></div></div></div></div></div>'
+			);
+
+			$(".beam").css('box-shadow', '0px 0px 5px ' + `${color}`);
+			$(".beam").css('border', '2px solid ' + `${color}`);
+
+			$("#radarEffect").css({
+				position: "absolute",
+				left: xPos,
+				top: yPos
+			});
+
+			var functionBasedDelay = anime({
+				targets: '#functionBasedDelay .am ',
+				scale: 2,
+				opacity: 0,
+				loop: false,
+				elasticity: 0,
+				duration: 3000,
+				delay: function (el, i, l) {
+					return i * 100;
+				}
+			});
+
+			setTimeout(function () {
+				var element = document.body;
+				var child = document.getElementById("radarEffect");
+				element.removeChild(child);
+			}, 1000);
+
+		}
+
+		function scaleAnimation(obj) {
+			$(`${obj}`).addClass('boing');
+			setTimeout(function () {
+				$(`${obj}`).removeClass('boing');
+			}, 400);
+		}
+
+		document.addEventListener("DOMContentLoaded", function (event) {
+			document.getElementById('fade1').className += ' fade';
+			document.getElementById('fade2').className += ' fade';
+			document.getElementById('fade3').className += ' fade';
+		});
+
+		$(function () {
+			$('#fade1').removeClass('fade');
+			$('#fade2').removeClass('fade');
+			$('#fade3').removeClass('fade');
+		});
+
+		
+
+		function checkForEnd() {
+				$link = $("body").attr("href");
+
+				$("body").removeClass("blackFade");
+
+				setTimeout(function () {
+					$("#content").fadeOut(500, function () {
+						window.location = $link;
+					});
+				}, 2500);
+			}
+	</script>
+</body>
+
+</html>

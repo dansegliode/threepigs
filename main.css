@@ -15,6 +15,15 @@ body {
 	margin: 0;
 	overflow: hidden;
 	user-select: none;
+	transition: 1s ease-in-out;
+}
+
+.blackFade {
+	background-color: black;
+}
+
+.whiteText {
+	color: white;
 }
 
 #fade1, #fade2, #fade3, #fade4, #fade5, #fade6 {
@@ -187,6 +196,13 @@ a:hover {
 	height: 48px;
 }
 
+.scrollIconBlack {
+	margin-top: 86px;
+	content: url(imgs/whitescroll.svg);
+	width: 48px;
+	height: 48px;
+}
+
 /* Radar Animation */
 .line{
 	transform: scale(-.5);
@@ -326,7 +342,14 @@ a:hover {
 	right: 30%;
 }
 
-.pigChar img{
+.wolfChar {
+	position: absolute;
+	left: 30%;
+}
+
+.pigChar img, .wolfChar img{
 	height: 100px;
 	width: 100px;
 }
+
+

@@ -11,18 +11,26 @@
 	<link href="main.css" rel="stylesheet">
 </head>
 
-<body href="scene_pig1house.html">
-	<div class="sceneIntroContainer">
-		<p id="fade1" class="storyPara">
-			The first little pig built a house made of straw, <br>
+<body href="scene_pig1wolfattack.html">
+	<div class="sceneIntroContainer blackFade">
+		<p id="fade1" class="storyPara whiteText">
+				"Little pig, little pig won’t you let me come in?"<br>
 
-			he thatched and he thatched till he couldn't thatch any more. <br>
-
-			He worked every day till his trotters were sore, <br>
-
-			then early one evening came a knock on the door. <br>
+				"No, no, no, by the hair on my chinny, chin, chin."<br>
+				
+				"Then I’ll huff and I’ll puff and I’ll blow your house in."<br>
+				
+				No, no, no, Mr. Wolf I will not let you in."<br>
+				
+				 
+				
+				So he huffed,<br>
+				
+				and he puffed,<br>
+				
+				and he huffed and he puffed and he blew the house in.<br>
 		</p>
-		<div id="fade6" class="scrollIcon">
+		<div id="fade6" class="scrollIconBlack">
 
 		</div>
 	</div>
@@ -30,7 +38,7 @@
 		document.addEventListener("DOMContentLoaded", function (event) {
 			document.getElementById('fade1').className += ' fade';
 			document.getElementById('fade6').className += ' fade';
-			$('.storyPara').addClass('storyFadeOut');
+			$('.whiteText').addClass('storyFadeOut');
 		});
 
 		$(function () {
@@ -40,10 +48,10 @@
 
 		setTimeout(function () {
 			document.addEventListener("wheel", function (e) {
-				$('.storyPara').removeClass('storyFadeOut');
+				$('.whiteText').removeClass('storyFadeOut');
 				e.preventDefault();
 				$link = $("body").attr("href");
-				$("body").fadeOut(500, function () {
+				$(".sceneIntroContainer").fadeOut(500, function () {
 					window.location = $link;
 				});
 			});
