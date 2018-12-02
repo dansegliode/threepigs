@@ -369,3 +369,16 @@ a:hover {
 	transform: rotate(.3turn);
 	transform: translate(20vw,10vh) rotate(45deg);
 }
+
+.wolfScatterTransition{
+	transition: 1.5s ease-out;
+}
+.wolfScatter {
+	position: relative;
+	transform: translate(-20vw,-40vh) rotate(120deg);
+}
+
+/* misc */
+.pointerNone{
+	pointer-events: none;
+}
