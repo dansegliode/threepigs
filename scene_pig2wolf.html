@@ -14,21 +14,21 @@
 <body href="scene_pig1wolfattack.html" class="blackFade">
 	<div class="sceneIntroContainer blackFade">
 		<p id="fade1" class="storyPara whiteText">
-				"Little pig, little pig won’t you let me come in?"<br>
+			"Little pig, little pig won’t you let me come in?"<br>
 
-				"No, no, no, by the hair on my chinny, chin, chin."<br>
-				
-				"Then I’ll huff and I’ll puff and I’ll blow your house in."<br>
-				
-				No, no, no, Mr. Wolf I will not let you in."<br>
-				
-				 <br>
-				
-				So he huffed,<br>
-				
-				and he puffed,<br>
-				
-				and he huffed and he puffed and he blew the house in.<br>
+			"No, no, no, by the hair on my chinny, chin, chin."<br>
+
+			"Then I’ll huff and I’ll puff and I’ll blow your house in."<br>
+
+			No, no, no, Mr. Wolf I will not let you in."<br>
+
+			 <br>
+
+			So he huffed, and he puffed,<br>
+
+			and he huffed, and he puffed,<br>
+
+			and he huffed and he puffed and he blew the house in.<br>
 		</p>
 		<div id="fade6" class="scrollIconBlack">
 
@@ -48,7 +48,7 @@
 
 		setTimeout(function () {
 			document.addEventListener("wheel", function (e) {
-				$('.whiteText').removeClass('storyFadeOut');
+				$('.storyPara').removeClass('storyFadeOut');
 				e.preventDefault();
 				$link = $("body").attr("href");
 				$(".sceneIntroContainer").fadeOut(500, function () {
