@@ -148,13 +148,10 @@ document.addEventListener("drag", function (event) {
 
 	// function used at the end of a scene to transition out
 	function checkForEnd() {
-		$link = $("body").attr("href");
-
-
 		setTimeout(function () {
 			$("#content").fadeOut(500, function () {
 
-				window.location = $link;
+				window.location = "scene_pig2story.html";
 			});
 		}, 2400);
 		setTimeout(function () {

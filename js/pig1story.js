@@ -16,7 +16,7 @@ setTimeout(function () {
         e.preventDefault();
         
         $(".sceneIntroContainer").fadeOut(500, function () {
-            window.location = "scene_ pig1house.html";
+            window.location = "scene_pig1house.html";
         });
     });
 }, 2700);
