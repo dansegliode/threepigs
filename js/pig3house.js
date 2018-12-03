@@ -278,7 +278,7 @@ document.addEventListener("dragend", function (event) {
 });
 
 
-
+// function used at the end of a scene to transition out
 function checkForEnd() {
     if ((pig1Draggable == false) && (pig2Draggable == false) && (pig3Draggable == false)) {
         $link = $("body").attr("href");

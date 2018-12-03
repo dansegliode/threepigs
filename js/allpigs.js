@@ -129,7 +129,7 @@ document.addEventListener("dragstart", function (event) {
 document.addEventListener("drag", function (event) {
 	// updates coordinates
 	updateMatCoords();
-	 // checks if the target is a certain pig and if it is pig1Draggable then checks to make sure it is not any of the objects
+	// checks if the target is a certain pig and if it is pig1Draggable then checks to make sure it is not any of the objects
 	if ((pigTarget == "#pig1") && pig1Draggable) {
 		if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
 
@@ -169,7 +169,7 @@ document.addEventListener("drag", function (event) {
 			// then if the cursor is in a certain location reelative to the filled checker object
 			if (((mouseXPos > (hayX - 25)) && (mouseXPos < (hayX + 125))) && ((mouseYPos > (hayY - 25)) && (mouseYPos < (
 				hayY + 125)))) {
-				// sets that object to snap into place of the old object
+					// sets that object to snap into place of the old object
 					$(`${pigTarget}`).css({
 						position: "absolute",
 						left: hayX,
@@ -294,6 +294,7 @@ document.addEventListener("drag", function (event) {
 
 
 						// function to check if all objects are filled in
+						// function used at the end of a scene to transition out
 						function checkForEnd() {
 
 							if ((pig1Draggable == false) && (pig2Draggable == false) && (pig3Draggable == false)) {
