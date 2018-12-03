@@ -254,21 +254,21 @@ document.addEventListener("dragend", function (event) {
 		checkForEnd();
 	}
 
-	if (((mouseXPos > (hayX - 25)) && (mouseXPos < (hayX + 125))) && ((mouseYPos > (hayY - 25)) && (mouseYPos < (hayY +
-			125)))) {
-		hayTargetFilled = true;
-		haysPig = pigTarget;
-		if (haysPig == "#pig1") {
-			pig1Draggable = false;
-		} else if (haysPig == "#pig2") {
-			pig2Draggable = false;
-		} else if (haysPig == "#pig3") {
-			pig3Draggable = false;
-		}
-		checkForEnd();
-	}
-	// release object on spot and animate
-	console.log("haytarget" + hayTargetFilled);
+						if (((mouseXPos > (hayX - 25)) && (mouseXPos < (hayX + 125))) && ((mouseYPos > (hayY - 25)) && (mouseYPos < (hayY +
+							125)))) {
+								hayTargetFilled = true;
+								haysPig = pigTarget;
+								if (haysPig == "#pig1") {
+									pig1Draggable = false;
+								} else if (haysPig == "#pig2") {
+									pig2Draggable = false;
+								} else if (haysPig == "#pig3") {
+									pig3Draggable = false;
+								}
+								checkForEnd();
+							}
+
+							console.log("haytarget" + hayTargetFilled);
 
 	// when an object is filled in it sees which object it is then plays the radar effect at that objects location
 	if (hayTargetFilled && !hayAnimationPlayed) {
