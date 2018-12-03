@@ -300,7 +300,7 @@ function checkForEnd() {
 
 	if ((pig1Draggable == false) && (pig2Draggable == false) && (pig3Draggable == false)) {
 		// if they are filled in, then it sets the href to a link variable and after a fade it sends the user to that href
-=
+
 		console.log("finished");
 		setTimeout(function () {
 			$(".pigsAndMaterials").fadeOut(500, function () {
@@ -308,7 +308,7 @@ function checkForEnd() {
 				window.location = "scene_pig1story.html";
 			});
 		}, 600)
->>>>>>> 7fab03cec0048191a7d3c53d78e7bfbc01f22ee4
+
 
 	}
 }
