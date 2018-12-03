@@ -14,41 +14,19 @@
 <body href="scene_pig2house.html">
 	<div class="sceneIntroContainer">
 		<p id="fade1" class="storyPara">
-                The second little pig built a house made of sticks,<br>
+			The second little pig built a house made of sticks,<br>
 
-                he paid close attention to all the fiddley bits.<br>
-                
-                With curtains on the windows and carpet on the floor,<br>
-                
-                then early one evening came a knock on the door.<br>
+			he paid close attention to all the fiddley bits.<br>
+
+			With curtains on the windows and carpet on the floor,<br>
+
+			then early one evening came a knock on the door.<br>
 		</p>
 		<div id="fade6" class="scrollIcon">
 
 		</div>
 	</div>
-	<script>
-		document.addEventListener("DOMContentLoaded", function (event) {
-			document.getElementById('fade1').className += ' fade';
-			document.getElementById('fade6').className += ' fade';
-			$('.storyPara').addClass('storyFadeOut');
-		});
-
-		$(function () {
-			$('#fade1').removeClass('fade');
-			$('#fade6').removeClass('fade');
-		});
-
-		setTimeout(function () {
-			document.addEventListener("wheel", function (e) {
-				$('.storyPara').removeClass('storyFadeOut');
-				e.preventDefault();
-				$link = $("body").attr("href");
-				$(".sceneIntroContainer").fadeOut(500, function () {
-					window.location = $link;
-				});
-			});
-		}, 2700);
-	</script>
+	<script src="js/pig2story.js"></script>
 </body>
 
 </html>
