@@ -1,5 +1,5 @@
-# threepigs
+# The Three Little Pigs Interactive Story
 #
-#Interactive Story By: Andrew Hurley & Sarah Money Danseglio
+## Interactivity and Design By: Andrew Hurley & Sarah Money Danseglio
 #
-#Adapted from James Halliwell-Phillipps' story "The Three Little Pigs"
+### Adapted from James Halliwell-Phillipps' story "The Three Little Pigs"
