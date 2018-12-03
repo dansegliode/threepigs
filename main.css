@@ -2,7 +2,7 @@
 	box-sizing: border-box;
 	font-family: 'Didot', 'Arapey', Times, serif;
 }
-
+/* wrapper used mostly in the story sections for text placement and scroll icon placement */
 .wrapper {
 	height: 100vh;
 	display: flex;
@@ -14,21 +14,25 @@
 body {
 	margin: 0;
 	overflow: hidden;
+	/* user select none makes it so the user cannot
+	highlight things and cause issues with
+	the interactivity */
 	user-select: none;
 	-moz-user-select:none;
 	transition: 1s ease-in-out;
 }
-
+/* for fading between the light and dark sections of the story */
 .blackFade {
 	background-color: black;
 }
-
+/* for the dark sections of the story we need the text to turn white on the black background */
 .whiteText {
 	color: white;
 }
-
+/* set up of multiple fades for different use cases, they go sequantially and increase in transition delay duration */
 #fade1, #fade2, #fade3, #fade4, #fade5, #fade6 {
 	opacity: 1;
+	/* custom cubic bezier speed curve made with http://cubic-bezier.com */
 	transition: 1s all cubic-bezier(0.400, 0.015, 0.530, 1.015);
 }
 
@@ -51,12 +55,12 @@ body {
 #fade6 {
 	transition-delay: 2.5s;
 }
-
+/* what the fades turn into from full opacity to none */
 #fade1.fade, #fade2.fade, #fade3.fade, #fade4.fade, #fade5.fade, #fade6.fade {
 	opacity: 0;
 	transition: none;
 }
-
+/* styling for the title "three little pigs" */
 h1 {
 	text-shadow: 0px 0px 9px grey;
 	letter-spacing: .1rem;
@@ -66,7 +70,7 @@ h1 {
 	text-align: center;
 }
 
-
+/* nav styling */
 nav {
 	display: flex;
 	margin-bottom: 40px;
@@ -74,24 +78,24 @@ nav {
 	width: 80%;
 	justify-content: space-around;
 }
-
+/* css reset for the p tag */
 p {
 	margin: 0;
 }
-
+/* css reset for the a tag */
 a {
 	text-decoration: none;
 	color: black;
 	transition: .3s;
 }
-
+/* placement for our start button */
 .beginButton{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-
+/* hover affordance animation */
 .begin:hover img{
 	transform: scale(1.1);
 }
@@ -100,21 +104,23 @@ a {
 	text-shadow: 0px 0px 5px #666;
 
 }
-
+/* link affordance animation */
 a:hover {
 	text-shadow: 0px 0px 5px #666;
 	position: relative;
 }
-
+/* images for the links hover*/
 #pigOne:before {
+	/* content is used to fill the object with images */
 	content: url(imgs/hay.svg);
 	opacity: 0;
 	position: absolute;
 	transform: translate(-10px, -10px);
+	/* transition for only opacity and transform */
 	transition: opacity .3s, transform .3s;
 	pointer-events: none;
 }
-
+/* the animation that brings the image into view */
 #pigOne:hover:before {
 	opacity: 1;
 	position: absolute;
@@ -151,6 +157,7 @@ a:hover {
 	transform: translate(-3px, -50px);
 }
 
+/* play button transitions */
 .playButton {
 	transition: .3s;
 }
@@ -158,13 +165,13 @@ a:hover {
 .playButton:hover {
 	transform: scale(1.1);
 }
-
+/* setting a "variable" class for the use of gray */
 .gray {
 	color: gray;
 }
 
 /* scene_intro */
-
+/* story text positioning */
 .sceneIntroContainer{
 	height: 100vh;
 	display: flex;
@@ -172,7 +179,7 @@ a:hover {
 	align-items: center;
 	justify-content: center;
 }
-
+/* story text formatting */
 .storyPara{
 	min-width: 420px;
 	line-height: 200%;
@@ -205,11 +212,13 @@ a:hover {
 }
 
 /* Radar Animation */
+/* the container for the beam */
 .line{
 	transform: scale(-.5);
 	position: relative;
 
 }
+/* the visible beam */
 .beam{
 	position: relative;
 	width: 100px;
@@ -218,15 +227,17 @@ a:hover {
 	border: 2px solid rgba(253, 229, 107, 0.5);
 	border-radius: 100%;
 	box-sizing: border-box;
+	/* centering axis of transformation */
 	transform-origin: center center;
 	box-shadow: 0px 0px 5px #FDE56B;
 }
 
 /* boing animation */
+/* animation used when picking up and placing objects */
 .boing {
 	animation: boing .4s ease-in-out;
 }
-
+/* keyframes used to fine tune the look of the boing */
 @keyframes boing {
 	0% {transform: scale(1);}
 	33% {transform: scale(1.1);}
@@ -235,11 +246,13 @@ a:hover {
 }
 
 /* scene all pigs */
+/* wrapper for placing objects */
 .allPigsWrapper{
 	display: flex;
 	justify-content: center;
 	flex-direction: row;
 }
+/* positioning for the group of objects */
 .allPigMatGroups{
 	display: flex;
 	justify-content:space-between;
@@ -247,30 +260,32 @@ a:hover {
 	height: 40vh;
 	flex-direction: row;
 }
+/* sizing for the image */
 .pig img{
 	height: 90px;
 	width:90px;
 }
+/* placement of individual images */
 .pigMat{
 	display: flex;
 	justify-content:space-between;
 	flex-direction: column;
 }
-
+/* material sizing with pointer events none so the user cannot access the object and cause errors */
 .material img{
 	height: 90px;
 	width:90px;
 	pointer-events: none;
 }
-
+/* placing the material behind for visuals and functionality */
 .material {
 	z-index: -1;
 }
-
+/* placing the items infront of the others for visual aesthetics */
 #hay1, #stick1,  #brick1 {
 	z-index: 2 !important;
 }
-
+/*  */
 .pigsAndMaterials{
 	height: 100vh;
 	display: flex;
