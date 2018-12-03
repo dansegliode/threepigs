@@ -135,7 +135,7 @@ document.addEventListener("drag", function (event) {
     }
 });
 
-
+// function used at the end of a scene to transition out
 function checkForEnd() {
     $link = $("body").attr("href");
 
