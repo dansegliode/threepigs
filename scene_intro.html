@@ -43,7 +43,7 @@
 				$('.storyPara').removeClass('storyFadeOut');
 				e.preventDefault();
 				$link = $("body").attr("href");
-				$("body").fadeOut(500, function () {
+				$(".sceneIntroContainer").fadeOut(500, function () {
 					window.location = $link;
 				});
 			});

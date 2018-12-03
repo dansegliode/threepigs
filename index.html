@@ -6,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Three Little Pigs</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 	<link href="https://fonts.googleapis.com/css?family=Arapey" rel="stylesheet">
 	<link href="main.css" rel="stylesheet">
 </head>
@@ -28,33 +29,10 @@
 			<a id="pigOne" href="scene_pig1story.html"><p>pig one</p></a>
 			<a id="pigTwo" href="scene_pig2story.html"><p>pig two</p></a>
 			<a id="pigThree" href="scene_pig3story.html"><p>pig three</p></a>
+			<a href="documentation.html"><p>docs</p></a>
 		</nav>
 	</div>
 
-	<script>
-		document.addEventListener("DOMContentLoaded", function(event) {
-			document.getElementById('fade1').className += ' fade';
-			document.getElementById('fade2').className += ' fade';
-			document.getElementById('fade3').className += ' fade';
-			document.getElementById('fade4').className += ' fade';
-			document.getElementById('fade5').className += ' fade';
-  		});
-
-		$(function() {
-    		$('#fade1').removeClass('fade');
-			$('#fade2').removeClass('fade');
-			$('#fade3').removeClass('fade');
-			$('#fade4').removeClass('fade');
-			$('#fade5').removeClass('fade');
-		});
-
-		$("a").click(function (e) {
-            e.preventDefault();
-            $link = $(this).attr("href");
-            $(".wrapper").fadeOut(500, function () {
-                window.location = $link;
-            });
-		});
-	</script>
+	<script src="js/index.js"></script>
 </body>
 </html>

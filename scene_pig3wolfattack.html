@@ -12,24 +12,22 @@
 	<link href="main.css" rel="stylesheet">
 </head>
 
-<body href="scene_pig2story.html" class="blackFade">
+<body href="scene_endingstory.html" class="blackFade">
 	<div id="content">
 		<div class="grayMatCenter">
 			<div id="fade1" class="grayMatGroup">
-				<div class="grayMat " id="staticMat1"><img src="imgs/goldhay.svg" alt="gold hay"></div>
-				<div class="grayMat" id="staticMat2"><img src="imgs/goldhay.svg" alt="gold hay"></div>
-				<div class="grayMat" id="staticMat3"><img src="imgs/goldhay.svg" alt="gold hay"></div>
+				<div class="grayMat " id="staticMat1"><img src="imgs/brickNormal.svg" alt="normal brick"></div>
+				<div class="grayMat" id="staticMat2"><img src="imgs/brickNormal.svg" alt="normal brick"></div>
+				<div class="grayMat" id="staticMat3"><img src="imgs/brickNormal.svg" alt="normal brick"></div>
 			</div>
 			<div class="pigChar" id="fade2"><img src="imgs/pig.svg" alt="pig character"></div>
 			<div class="wolfChar" id="draggableMat1"><img id="fade3" src="imgs/wolf.svg" alt="wolf character"></div>
-			<p id="fade6" class="instructionText whiteText">
-				drag the wolf to the pigs home <br>
-			</p>
 		</div>
 
 	</div>
 
 	<script>
+	let newWolfCreated = false;
 	// radar animation function
 	function playRadar(x, y, color) {
 
@@ -76,37 +74,34 @@
 		}, 400);
 	}
 
-	function playScatter() {
-		let piece1, piece2, piece3, piece1X, piece1Y, piece2X, piece2Y, piece3X, piece3Y;
+	function wolfAnimation(){
+		wolfScatter();
 
-		piece1 = $("#staticMat1");
-		piece2 = $("#staticMat2");
-		piece3 = $("#staticMat3");
+		if (wolfDraggable) {
+			playRadar(wolfX, wolfY, "#FF5EBE");
+			wolfDraggable = false;
+			checkForEnd();
+		}
+	}
 
-		piece1X = piece1[0].offsetLeft;
-		piece1Y = piece1[0].offsetTop;
-		piece2X = piece2[0].offsetLeft;
-		piece2Y = piece2[0].offsetTop;
-		piece3X = piece3[0].offsetLeft;
-		piece3Y = piece3[0].offsetTop;
+	function wolfScatter() {
 
-		piece1.addClass("staticMat1Transition");
-		piece2.addClass("staticMat2Transition");
-		piece3.addClass("staticMat3Transition");
+		// $("#newWolf").addClass(" wolfScatterTransition");
+		$("#newWolf").addClass(" wolfScatter");
+		$("#newWolf").removeClass(" wolfScatterTransition");
+
 	}
 
 	document.addEventListener("DOMContentLoaded", function (event) {
 		document.getElementById('fade1').className += ' fade';
 		document.getElementById('fade2').className += ' fade';
 		document.getElementById('fade3').className += ' fade';
-		document.getElementById('fade6').className += ' fade';
 	});
 
 	$(function () {
 		$('#fade1').removeClass('fade');
 		$('#fade2').removeClass('fade');
 		$('#fade3').removeClass('fade');
-		$('#fade6').removeClass('fade');
 	});
 
 	let mouseXPos;
@@ -115,7 +110,6 @@
 	let wolfDraggable = true;
 
 	document.addEventListener("dragover", function (event) {
-		//updateMatCoords();
 		mouseXPos = event.x;
 		mouseYPos = event.y;
 	});
@@ -132,6 +126,7 @@
 
 		scaleAnimation(pigTarget);
 
+
 	});
 
 	document.addEventListener("drag", function (event) {
@@ -145,36 +140,56 @@
 			});
 		}
 
+
 		hayX = $(".grayMatGroup")[0].offsetLeft;
 		hayY = $(".grayMatGroup")[0].offsetTop;
 		wolfX = $(".wolfChar")[0].offsetLeft;
 		wolfY = $(".wolfChar")[0].offsetTop;
 
+
 		if (((mouseXPos > (hayX - 45)) && (mouseXPos < (hayX + 50))) && ((mouseYPos > (hayY - 15)) && (mouseYPos <
 			(hayY + 500)))) {
 				console.log("there they go");
-				if ((pigTarget == "#draggableMat1") && wolfDraggable) {
-					playScatter();
+				// wolfDraggable = false;
+				if(wolfDraggable){
+					// $(`${pigTarget}`).addClass("pointerNone");
+					$(`${pigTarget}`).hide();
+					if (!newWolfCreated) {
+						$("body").prepend('<div class="wolfScatterTransition" id="newWolf"><img src="imgs/wolf.svg" alt="wolf character"></div>');
+						let x = mouseXPos - 40;
+						let y = mouseYPos - 60;
+						$("#newWolf").css({
+							position: "absolute",
+							left: x,
+							top: y
+						});
 
-				}
-				if (wolfDraggable) {
-					playRadar(wolfX, wolfY, "#FF0000");
-					wolfDraggable = false;
-					checkForEnd();
-				}
 
-				scaleAnimation(pigTarget);
+
+						newWolfCreated = true;
+					}
+
+					// var element = document.getElementsByClassName(" grayMatCenter");
+					// var child = document.getElementById(`${pigTarget}`);
+					// element.removeChild(child);
+
+
+					wolfAnimation();
+				}
+				// scaleAnimation(pigTarget);
 			}
+
+
 		});
 
 
 		function checkForEnd() {
-			$link = $("body").attr("href");
 
+			$link = $("body").attr("href");
 
 			setTimeout(function () {
 				$("#content").fadeOut(500, function () {
-
+					$("body").removeClass("blackFade");
 					window.location = $link;
 				});
 			}, 2400);

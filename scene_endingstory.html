@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Three Little Pigs</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Arapey" rel="stylesheet">
+	<link href="main.css" rel="stylesheet">
+</head>
+
+<body href="index.html">
+	<div class="sceneIntroContainer">
+		<p id="fade1" class="storyPara">
+			Now the three little pigs each had a house made of bricks,<br>
+
+			so they wouldn’t have to worry bout the wolf and his tricks.<br>
+
+			They each found a wife from that same little town,<br>
+
+			and soon there were piglets all running around.<br>
+		</p>
+		<div id="fade6" class="scrollIcon">
+
+		</div>
+	</div>
+	<script>
+	document.addEventListener("DOMContentLoaded", function (event) {
+		document.getElementById('fade1').className += ' fade';
+		document.getElementById('fade6').className += ' fade';
+		$('.storyPara').addClass('storyFadeOut');
+	});
+
+	$(function () {
+		$('#fade1').removeClass('fade');
+		$('#fade6').removeClass('fade');
+	});
+
+	setTimeout(function () {
+		document.addEventListener("wheel", function (e) {
+			$('.storyPara').removeClass('storyFadeOut');
+			e.preventDefault();
+			$link = $("body").attr("href");
+			$(".sceneIntroContainer").fadeOut(500, function () {
+				window.location = $link;
+			});
+		});
+	}, 2700);
+	</script>
+</body>
+
+</html>

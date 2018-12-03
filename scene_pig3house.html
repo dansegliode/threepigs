@@ -12,21 +12,21 @@
 	<link href="main.css" rel="stylesheet">
 </head>
 
-<body href="scene_pig2wolf.html">
+<body href="scene_pig3wolf.html">
 <div id="content">
 	<div class="grayMatCenter">
 		<div id="fade1" class="grayMatGroup">
-			<div class="grayMat" id="staticMat1"><img src="imgs/graystick.svg" alt="gray stick"></div>
-			<div class="grayMat" id="staticMat2"><img src="imgs/graystick.svg" alt="gray stick"></div>
-			<div class="grayMat" id="staticMat3"><img src="imgs/graystick.svg" alt="gray stick"></div>
+			<div class="grayMat" id="staticMat1"><img src="imgs/brickGray.svg" alt="gray brick"></div>
+			<div class="grayMat" id="staticMat2"><img src="imgs/brickGray.svg" alt="gray brick"></div>
+			<div class="grayMat" id="staticMat3"><img src="imgs/brickGray.svg" alt="gray brick"></div>
 		</div>
 		<div class="pigChar" id="fade5"><img src="imgs/pig.svg" alt="pig character"></div>
 		<div class="wolfChar"><img src="imgs/wolf.svg" alt="wolf character"></div>
 	</div>
 
-	<div class="normalMat normalPos1" id="draggableMat1" ><img id="fade2" src="imgs/brownstick.svg" alt="brown stick"></div>
-	<div class="normalMat normalPos2" id="draggableMat2" ><img id="fade3" src="imgs/brownstick.svg" alt="brown stick"></div>
-	<div class="normalMat normalPos3" id="draggableMat3" ><img id="fade4" src="imgs/brownstick.svg" alt="brown stick"></div>
+	<div class="normalMat normalPos1" id="draggableMat1" ><img id="fade2" src="imgs/brickNormal.svg" alt="normal brick"></div>
+	<div class="normalMat normalPos2" id="draggableMat2" ><img id="fade3" src="imgs/brickNormal.svg" alt="normal brick"></div>
+	<div class="normalMat normalPos3" id="draggableMat3" ><img id="fade4" src="imgs/brickNormal.svg" alt="normal brick"></div>
 </div>
 
 	<script>
@@ -34,8 +34,8 @@
 	// radar animation function
 	function playRadar(x, y, color) {
 
-		let xPos = x -25;
-		let yPos = y +25;
+		let xPos = x -30;
+		let yPos = y;
 		console.log(xPos + " " + yPos);
 		$("body").prepend(
 			'	<div id="radarEffect"><div id="functionBasedDelay"><div class="line"><div class="beam am"><div class="beam am"><div class="beam am"></div></div></div></div></div></div>'
@@ -240,7 +240,9 @@
 					if (((mouseXPos > (brickX - 25)) && (mouseXPos < (brickX + 125))) && ((mouseYPos > (brickY - 25)) && (mouseYPos <
 						(brickY + 125)))) {
 							brickTargetFilled = true;
+
 							bricksPig = pigTarget;
+
 							if (bricksPig == "#draggableMat1") {
 								pig1Draggable = false;
 							} else if (bricksPig == "#draggableMat2") {
@@ -254,7 +256,9 @@
 						if (((mouseXPos > (stickX - 25)) && (mouseXPos < (stickX + 125))) && ((mouseYPos > (stickY - 25)) && (mouseYPos <
 							(stickY + 125)))) {
 								stickTargetFilled = true;
+
 								sticksPig = pigTarget;
+
 								if (sticksPig == "#draggableMat1") {
 									pig1Draggable = false;
 								} else if (sticksPig == "#draggableMat2") {
@@ -268,7 +272,9 @@
 							if (((mouseXPos > (hayX - 25)) && (mouseXPos < (hayX + 125))) && ((mouseYPos > (hayY - 25)) && (mouseYPos < (hayY +
 								125)))) {
 									hayTargetFilled = true;
+
 									haysPig = pigTarget;
+
 									if (haysPig == "#draggableMat1") {
 										pig1Draggable = false;
 									} else if (haysPig == "#draggableMat2") {
@@ -282,21 +288,21 @@
 								console.log("haytarget" + hayTargetFilled);
 								if (hayTargetFilled && !hayAnimationPlayed) {
 									$(`${pigTarget}`).addClass("pointerNone");
-									playRadar(hayX, hayY, "#4EF24B");
+									playRadar(hayX, hayY, "#DF5542");
 									hayAnimationPlayed = true;
 
 
 								}
 								if (stickTargetFilled && !stickAnimationPlayed) {
 									$(`${pigTarget}`).addClass("pointerNone");
-									playRadar(stickX, stickY, "#4EF24B");
+									playRadar(stickX, stickY, "#DF5542");
 									stickAnimationPlayed = true;
 
 
 								}
 								if (brickTargetFilled && !brickAnimationPlayed) {
 									$(`${pigTarget}`).addClass("pointerNone");
-									playRadar(brickX, brickY, "#4EF24B");
+									playRadar(brickX, brickY, "#DF5542");
 									brickAnimationPlayed = true;
 
 
@@ -312,6 +318,7 @@
 									console.log("finished");
 
 									$("body").addClass("blackFade");
+									$(".wolfChar").addClass("pointerNone");
 
 									setTimeout(function () {
 

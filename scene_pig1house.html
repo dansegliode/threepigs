@@ -281,18 +281,21 @@
 								// release object on spot and animate
 								console.log("haytarget" + hayTargetFilled);
 								if (hayTargetFilled && !hayAnimationPlayed) {
+									$(`${pigTarget}`).addClass("pointerNone");
 									playRadar(hayX, hayY, "#FFA800");
 									hayAnimationPlayed = true;
 
 
 								}
 								if (stickTargetFilled && !stickAnimationPlayed) {
+									$(`${pigTarget}`).addClass("pointerNone");
 									playRadar(stickX, stickY, "#FFA800");
 									stickAnimationPlayed = true;
 
 
 								}
 								if (brickTargetFilled && !brickAnimationPlayed) {
+									$(`${pigTarget}`).addClass("pointerNone");
 									playRadar(brickX, brickY, "#FFA800");
 									brickAnimationPlayed = true;
 
@@ -311,9 +314,9 @@
 									$("body").addClass("blackFade");
 
 									setTimeout(function () {
-							
+
 										$("#content").fadeOut(500, function () {
-											
+
 											window.location = $link;
 										});
 									}, 2500);

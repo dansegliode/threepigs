@@ -15,6 +15,7 @@ body {
 	margin: 0;
 	overflow: hidden;
 	user-select: none;
+	-moz-user-select:none;
 	transition: 1s ease-in-out;
 }
 
@@ -369,15 +370,28 @@ a:hover {
 	transform: rotate(.3turn);
 	transform: translate(20vw,10vh) rotate(45deg);
 }
-.wolfScatterTransition{
-	transition: 1.5s ease-out;
-}
+
 .wolfScatter {
-	position: relative;
-	transform: translate(-20vw,-40vh) rotate(120deg);
+	animation: wolfFrames .6s ease-out;
 }
+
+@keyframes wolfFrames {
+	0% {transform: translate(0vw,0vh) rotate(0deg);}
+	100% {transform: translate(-30vw,0vh) rotate(120deg)}
+}
+#newWolf {
+	position: absolute;
+	transform: translate(-30vw,0vh) rotate(120deg)
+}
+.wolfScatterTransition{
+	position: absolute;
+	transform: translate(0vw,0vh) rotate(0deg);
+	/* transition: 1.5s transform ease-out; */
+}
+
+
 
 /* misc */
 .pointerNone{
-	pointer-events: none;
+	pointer-events:none;
 }
