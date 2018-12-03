@@ -297,8 +297,8 @@ document.addEventListener("drag", function (event) {
 						function checkForEnd() {
 
 							if ((pig1Draggable == false) && (pig2Draggable == false) && (pig3Draggable == false)) {
-								// if they are filled in, then it sets the body href to a link variabl and after a fade it sents the user to that href
-								// learned how to do this from https://stackoverflow.com/questions/4345427/setting-href-attribute-at-runtime
+								// if they are filled in, then it sets the body href to a link variable and after a fade it sends the user to that href
+							
 								$link = $("body").attr("href");
 								console.log("finished");
 								setTimeout(function () {
