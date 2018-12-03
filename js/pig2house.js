@@ -154,8 +154,8 @@ document.addEventListener("drag", function (event) {
 
     if ((pigTarget != "#staticMat1") && (pigTarget != "#staticMat2") && (pigTarget != "#staticMat3")) {
         if (!hayTargetFilled) {
-            if (((mouseXPos > (hayX - 25)) && (mouseXPos < (hayX + 125))) && ((mouseYPos > (hayY - 25)) && (mouseYPos < (
-                    hayY + 125)))) {
+            if (((mouseXPos > (hayX - 25)) && (mouseXPos < (hayX + 125))) && ((mouseYPos > (hayY)) && (mouseYPos < (
+                    hayY + 100)))) {
                 $(`${pigTarget}`).css({
                     position: "absolute",
                     left: hayX - 15,
@@ -170,8 +170,8 @@ document.addEventListener("drag", function (event) {
     stickY = $("#staticMat2")[0].offsetTop;
     if ((pigTarget != "#staticMat1") && (pigTarget != "#staticMat2") && (pigTarget != "#staticMat3")) {
         if (!stickTargetFilled) {
-            if (((mouseXPos > (stickX - 25)) && (mouseXPos < (stickX + 125))) && ((mouseYPos > (stickY - 25)) && (mouseYPos <
-                    (stickY + 125)))) {
+            if (((mouseXPos > (stickX - 25)) && (mouseXPos < (stickX + 125))) && ((mouseYPos > (stickY)) && (mouseYPos <
+                    (stickY + 100)))) {
                 $(`${pigTarget}`).css({
                     position: "absolute",
                     left: stickX - 15,
@@ -186,8 +186,8 @@ document.addEventListener("drag", function (event) {
     brickY = $("#staticMat3")[0].offsetTop;
     if ((pigTarget != "#staticMat1") && (pigTarget != "#staticMat2") && (pigTarget != "#staticMat3")) {
         if (!brickTargetFilled) {
-            if (((mouseXPos > (brickX - 25)) && (mouseXPos < (brickX + 125))) && ((mouseYPos > (brickY - 25)) && (mouseYPos <
-                    (brickY + 125)))) {
+            if (((mouseXPos > (brickX - 25)) && (mouseXPos < (brickX + 125))) && ((mouseYPos > (brickY)) && (mouseYPos <
+                    (brickY + 100)))) {
                 $(`${pigTarget}`).css({
                     position: "absolute",
                     left: brickX - 15,
@@ -204,8 +204,8 @@ document.addEventListener("dragend", function (event) {
     updateMatCoords();
 
     console.log("drag end");
-    if (((mouseXPos > (brickX - 25)) && (mouseXPos < (brickX + 125))) && ((mouseYPos > (brickY - 25)) && (mouseYPos <
-            (brickY + 125)))) {
+    if (((mouseXPos > (brickX - 25)) && (mouseXPos < (brickX + 125))) && ((mouseYPos > (brickY)) && (mouseYPos <
+            (brickY + 100)))) {
         brickTargetFilled = true;
         bricksPig = pigTarget;
         if (bricksPig == "#draggableMat1") {
@@ -218,8 +218,8 @@ document.addEventListener("dragend", function (event) {
         checkForEnd();
     }
 
-    if (((mouseXPos > (stickX - 25)) && (mouseXPos < (stickX + 125))) && ((mouseYPos > (stickY - 25)) && (mouseYPos <
-            (stickY + 125)))) {
+    if (((mouseXPos > (stickX - 25)) && (mouseXPos < (stickX + 125))) && ((mouseYPos > (stickY)) && (mouseYPos <
+            (stickY + 100)))) {
         stickTargetFilled = true;
         sticksPig = pigTarget;
         if (sticksPig == "#draggableMat1") {
@@ -232,8 +232,8 @@ document.addEventListener("dragend", function (event) {
         checkForEnd();
     }
 
-    if (((mouseXPos > (hayX - 25)) && (mouseXPos < (hayX + 125))) && ((mouseYPos > (hayY - 25)) && (mouseYPos < (hayY +
-            125)))) {
+    if (((mouseXPos > (hayX - 25)) && (mouseXPos < (hayX + 125))) && ((mouseYPos > (hayY)) && (mouseYPos < (hayY +
+            100)))) {
         hayTargetFilled = true;
         haysPig = pigTarget;
         if (haysPig == "#draggableMat1") {
