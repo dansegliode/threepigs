@@ -285,7 +285,7 @@ a:hover {
 #hay1, #stick1,  #brick1 {
 	z-index: 2 !important;
 }
-/*  */
+
 .pigsAndMaterials{
 	height: 100vh;
 	display: flex;
@@ -293,12 +293,7 @@ a:hover {
 	align-items: center;
 }
 
-
-#tutLine img {
-	/* height: inherit; */
-	width: 100%;
-}
-
+/* hints for the user to introduce them to the game/story mechanics */
 .instructionText{
 	position: absolute;
 	text-align: center;
@@ -311,13 +306,14 @@ a:hover {
 }
 
 /* scene_pig1house */
-
+/* positioning for the goal or gray materials that the user drag and drops into  */
 .grayMatCenter{
 	display: flex;
 	height: 100vh;
 	justify-content: center;
 	align-items: center;
 }
+/* individual placing */
 .grayMatGroup{
 	display: flex;
 	flex-direction: column;
@@ -327,7 +323,7 @@ a:hover {
 	pointer-events: none;
 
 }
-
+/* positioning for the strewn about objects */
 .normalPos1{
 	position: absolute;
 	left: 25%;
@@ -345,7 +341,7 @@ a:hover {
 	left: 65%;
 	top: 65%;
 }
-
+/* pig and wolf characters placement */
 .pigChar{
 	position: absolute;
 	right: 30%;
@@ -357,18 +353,18 @@ a:hover {
 	left: 30%;
 	transform: translate(0,0);
 }
-
+/* pig and wolf sizing */
 .pigChar img, .wolfChar img{
 	height: 100px;
 	width: 100px;
 }
-
+/* animation css for the scattering*/
 .grayMat{
 	position: relative;
 	transform: translate(0,0);
 	transition: 1.5s ease-out;
 }
-
+/* individual places for the objects to scatter to */
 .staticMat1Transition {
 	position: relative;
 	transform: translate(5vw,-10vh) rotate(20deg);
@@ -385,7 +381,7 @@ a:hover {
 	transform: rotate(.3turn);
 	transform: translate(20vw,10vh) rotate(45deg);
 }
-
+/* wolf scatter animation css */
 .wolfScatter {
 	animation: wolfFrames .6s ease-out;
 }
@@ -407,6 +403,7 @@ a:hover {
 
 
 /* misc */
+/* added on the fly to prevent certain objects from being interacted with at certain times */
 .pointerNone{
 	pointer-events:none;
 }
