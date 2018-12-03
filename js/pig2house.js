@@ -275,7 +275,6 @@ document.addEventListener("dragend", function (event) {
 // function used at the end of a scene to transition out
 function checkForEnd() {
     if ((pig1Draggable == false) && (pig2Draggable == false) && (pig3Draggable == false)) {
-        $link = $("body").attr("href");
         console.log("finished");
 
         $("body").addClass("blackFade");
@@ -284,7 +283,7 @@ function checkForEnd() {
 
             $("#content").fadeOut(500, function () {
 
-                window.location = $link;
+                window.location = "scene_pig2wolf.html";
             });
         }, 2500);
 
