@@ -410,13 +410,15 @@ a:hover {
 
 
 /* documentation css */
+
 .docWrapper {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	height: fit-content;
+	height: auto;
 }
 
+/* different p tag styles for documentation */
 .docP {
 	font-family: "PT Serif", "Didot", serif;
 	line-height: 25px;
@@ -440,19 +442,31 @@ h2 {
 	text-shadow: 0px 0px 5px #999;
 }
 
+/* margin above first header for spacing */
 h2:first-of-type {
 	margin-top: 30px;
 }
 
+/* since the body is set to hide overflow for the story, this one needs to be changed to scroll */
 .overflow {
 	overflow: scroll !important;
 }
 
 .back {
-	margin: 30px 0 0 30px;
+	align-self: flex-start;
+	margin: 30px 0px 0px 30px;
+	position: fixed;
+}
 
+/*fixing a link hovering glitch */
+.back:hover {
+	position: fixed;
 }
 
 .doch1 {
 	margin-top: 100px;
+}
+
+.spacing {
+	height: 150px;
 }
