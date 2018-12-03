@@ -267,7 +267,7 @@ document.addEventListener("drag", function (event) {
 								}
 								checkForEnd();
 							}
-							// release object on spot and animate
+
 							console.log("haytarget" + hayTargetFilled);
 
 							// when an object is filled in it sees which object it is then plays the radar effect at that objects location
