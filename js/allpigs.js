@@ -298,11 +298,12 @@ document.addEventListener("drag", function (event) {
 
 							if ((pig1Draggable == false) && (pig2Draggable == false) && (pig3Draggable == false)) {
 								// if they are filled in, then it sets the body href to a link variable and after a fade it sends the user to that href
-							
+								// sets a variable as the bodys href
 								$link = $("body").attr("href");
 								console.log("finished");
 								setTimeout(function () {
 									$(".pigsAndMaterials").fadeOut(500, function () {
+										// tells the browser to go to the new location
 										window.location = $link;
 									});
 								}, 600)
