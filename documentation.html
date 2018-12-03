@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,21 +10,58 @@
 	<link href="https://fonts.googleapis.com/css?family=Arapey" rel="stylesheet">
 	<link href="main.css" rel="stylesheet">
 </head>
-<body>
-	<div class="wrapper">
 
-			<a href="index.html"><p>home</p></a>
+<body class="overflow">
+	<div>
+		<a id="fade1" href="index.html">
+			<p class="back">&larr; home</p>
+		</a>
+		<div class="docWrapper overflow down">
+			<h1 class="doch1">documentation</h1>
+			<h2>audience</h2>
+			<p class="docP">Children, Parents, Teachers <br>
+				People surfin' the Net<br>
+				Reading time in class</p>
+
+			<h2>goal</h2>
+			<p class="docP">To tell the story of the three little pigs through interactive graphics.</p>
+			<p class="docP">Design goals include contrasting scenes to represent good and evil, 
+					using a simple approach to graphics using basic geometry children are familiar with, and
+					having users use mouse scrolling, dragging and clicking as interactions.</p>
+			
+			<h2>wireframes</h2>
+			<p class="docP">Our wireframes/sketches can be found <a href="https://www.figma.com/file/a8yjODV1ZN8QCWT9Ujlm5igy/three-little-pigs?node-id=0%3A1">here</a></p>
+		
+			<h2>design</h2>
+			<p class="docP"></p>
+
+			<h2>responsibilities</h2>
+			<p class="docP"></p>
+
+			<h2>resources</h2>
+			<p class="docP">typeface - <a href="https://fonts.google.com/specimen/PT+Serif">PT Serif</a></p>
+			<p class="docP">library - <a href="http://animejs.com/">anime.js</a></p>
+			<p class="docP">code - <a href=""></a></p>
+		</div>
 	</div>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function(event) {
+		document.addEventListener("DOMContentLoaded", function (event) {
 			document.getElementById('fade1').className += ' fade';
-  		});
-
-		$(function() {
-    		$('#fade1').removeClass('fade');
 		});
 
+		$(function () {
+			$('#fade1').removeClass('fade');
+		});
+
+		$("a").click(function (e) {
+			e.preventDefault();
+			$link = $(this).attr("href");
+			$(".wrapper").fadeOut(500, function () {
+				window.location = $link;
+			});
+		});
 	</script>
 </body>
+
 </html>

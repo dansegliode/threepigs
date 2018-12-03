@@ -410,3 +410,52 @@ a:hover {
 .pointerNone{
 	pointer-events:none;
 }
+
+
+/* documentation css */
+.docWrapper {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	height: fit-content;
+}
+
+.docP {
+	font-family: "PT Serif", "Didot", serif;
+	line-height: 25px;
+	max-width: 700px;
+	width: 70vw;
+	margin-top: 15px;
+	text-align: left;
+}
+
+.docP a {
+	font-family: "PT Serif", "Didot", serif;
+	color: red;
+}
+
+h2 {
+	margin-top: 80px;
+	margin-bottom: 20px;
+	text-align: left;
+	width: 70vw;
+	max-width: 700px;
+	text-shadow: 0px 0px 5px #999;
+}
+
+h2:first-of-type {
+	margin-top: 30px;
+}
+
+.overflow {
+	overflow: scroll !important;
+}
+
+.back {
+	margin: 30px 0 0 30px;
+
+}
+
+.doch1 {
+	margin-top: 100px;
+}
