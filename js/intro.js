@@ -14,9 +14,8 @@ setTimeout(function () {
     document.addEventListener("wheel", function (e) {
         $('.storyPara').removeClass('storyFadeOut');
         e.preventDefault();
-        $link = $("body").attr("href");
         $(".sceneIntroContainer").fadeOut(500, function () {
-            window.location = $link;
+            window.location = "scene_allpigs.html";
         });
     });
 }, 2700);

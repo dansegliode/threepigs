@@ -14,9 +14,9 @@ setTimeout(function () {
     document.addEventListener("wheel", function (e) {
         $('.whiteText').removeClass('storyFadeOut');
         e.preventDefault();
-        $link = $("body").attr("href");
+       
         $(".sceneIntroContainer").fadeOut(500, function () {
-            window.location = $link;
+            window.location = "scene_pig3wolfattack.html";
         });
     });
 }, 2700);
