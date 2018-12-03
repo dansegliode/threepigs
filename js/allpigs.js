@@ -93,18 +93,23 @@ function updateMatCoords() {
 	brickX = $("#brick1")[0].offsetLeft;
 	brickY = $("#brick1")[0].offsetTop;
 }
-// constantly updates coordinates
+// initial update to coordinates
 updateMatCoords();
 
+// updates item position on resize
 document.onresize = function () {
 	updateMatCoords();
 };
 
+// updates coords on drag as well as mouse coordinates
 document.addEventListener("dragover", function (event) {
 	updateMatCoords();
 	mouseXPos = event.x;
 	mouseYPos = event.y;
 });
+// used to keep the ghosting image from appearing when you drag an image
+// adapted from https://kryogenix.org/code/browser/custom-drag-image.html
+// creates a new image, sets the image to be the blank image, then an event listener that sets the image when the cursor starts dragging
 var img = new Image();
 img.src = 'imgs/blank.png';
 document.addEventListener("dragstart", function (event) {
@@ -114,17 +119,21 @@ document.addEventListener("dragstart", function (event) {
 	event.dataTransfer.setData("text/plain", event.target.id);
 
 	event.dataTransfer.setDragImage(img, 0, 0);
-
+	// on drag it does the scale animation to the current target object
 	scaleAnimation(pigTarget);
 
 	console.log(pigTarget);
 
 });
-
+// during the drag function
 document.addEventListener("drag", function (event) {
+	// updates coordinates
 	updateMatCoords();
+	 // checks if the target is a certain pig and if it is pig1Draggable then checks to make sure it is not any of the objects
 	if ((pigTarget == "#pig1") && pig1Draggable) {
 		if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
+
+			// then sets the css of that target to the position of the mouse minus some pixels to place it better on screen
 			$(`${pigTarget}`).css({
 				position: "absolute",
 				left: mouseXPos - 50,
@@ -132,7 +141,7 @@ document.addEventListener("drag", function (event) {
 			});
 		}
 	}
-
+	// then subsequent pigs are checked
 	if ((pigTarget == "#pig2") && pig2Draggable) {
 		if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
 			$(`${pigTarget}`).css({
@@ -153,21 +162,26 @@ document.addEventListener("drag", function (event) {
 		}
 	}
 
-
+	// then it checks if the target object is any material, and is that material is filled or not and then sees if the mouse position is in the hit box of that object. this allows for the user to drag objects over another object
 	if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
+		// if a material is filled
 		if (!hayTargetFilled) {
+			// then if the cursor is in a certain location reelative to the filled checker object
 			if (((mouseXPos > (hayX - 25)) && (mouseXPos < (hayX + 125))) && ((mouseYPos > (hayY - 25)) && (mouseYPos < (
 				hayY + 125)))) {
+				// sets that object to snap into place of the old object
 					$(`${pigTarget}`).css({
 						position: "absolute",
 						left: hayX,
 						top: hayY
 					});
+					// animates on snap
 					scaleAnimation(pigTarget);
 				}
 			}
 		}
 
+		// updates coordinates of a material, selected based on its DOM attributes offset
 		stickX = $("#stick1")[0].offsetLeft;
 		stickY = $("#stick1")[0].offsetTop;
 		if ((pigTarget != "#hay1") && (pigTarget != "#stick1") && (pigTarget != "#brick1")) {
@@ -206,20 +220,26 @@ document.addEventListener("drag", function (event) {
 				updateMatCoords();
 
 				console.log("drag end");
+				// when the drag ends it sees where the mouse is, if it is on a certain object, and the checks if all the objects are in their spot
 				if (((mouseXPos > (brickX - 25)) && (mouseXPos < (brickX + 125))) && ((mouseYPos > (brickY - 25)) && (mouseYPos <
 					(brickY + 125)))) {
+						// if it is the object it is checking for it sets its target to be filled
 						brickTargetFilled = true;
+						// it then sets the one object to the current object
 						bricksPig = pigTarget;
+						// sees which object equals the dropped object
 						if (bricksPig == "#pig1") {
+							// if this happens to be the object it sets its draggability to false
 							pig1Draggable = false;
 						} else if (bricksPig == "#pig2") {
 							pig2Draggable = false;
 						} else if (bricksPig == "#pig3") {
 							pig3Draggable = false;
 						}
+						// checks if the end is true
 						checkForEnd();
 					}
-
+					// checks the rest of the targets
 					if (((mouseXPos > (stickX - 25)) && (mouseXPos < (stickX + 125))) && ((mouseYPos > (stickY - 25)) && (mouseYPos <
 						(stickY + 125)))) {
 							stickTargetFilled = true;
@@ -249,6 +269,8 @@ document.addEventListener("drag", function (event) {
 							}
 							// release object on spot and animate
 							console.log("haytarget" + hayTargetFilled);
+
+							// when an object is filled in it sees which object it is then plays the radar effect at that objects location
 							if (hayTargetFilled && !hayAnimationPlayed) {
 								playRadar(hayX, hayY, "#FFA800");
 								hayAnimationPlayed = true;
@@ -271,9 +293,12 @@ document.addEventListener("drag", function (event) {
 						});
 
 
-
+						// function to check if all objects are filled in
 						function checkForEnd() {
+
 							if ((pig1Draggable == false) && (pig2Draggable == false) && (pig3Draggable == false)) {
+								// if they are filled in, then it sets the body href to a link variabl and after a fade it sents the user to that href
+								// learned how to do this from https://stackoverflow.com/questions/4345427/setting-href-attribute-at-runtime
 								$link = $("body").attr("href");
 								console.log("finished");
 								setTimeout(function () {
