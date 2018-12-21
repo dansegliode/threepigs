@@ -87,7 +87,7 @@ let hayAnimationPlayed = false,
 	stickAnimationPlayed = false,
 	brickAnimationPlayed = false;
 //  grabbing the material coordinates by accessing their DOM attributes, first it grabs the object by its ID with jquery then goes to the first attribute which is array position 0 then accessed their offsets because they are absolute to the page and are the best representation of true coordinates
-
+let isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 function updateMatCoords() {
 	hayX = $("#staticMat1")[0].offsetLeft;
 	hayY = $("#staticMat1")[0].offsetTop;
@@ -115,11 +115,15 @@ var img = new Image();
 img.src = 'imgs/blank.png';
 document.addEventListener("dragstart", function (event) {
 	updateMatCoords();
-	pigTarget = "#" + event.path[1].id;
-	event.dataTransfer.setData("text/plain", event.target.id);
-	// on drag it does the scale animation to the current target object
-	event.dataTransfer.setDragImage(img, 0, 0);
+	if (isFirefox) {
+		pigTarget = "#" + event.target.parentNode.id;
+	}else{
+		pigTarget = "#" + event.path[1].id;
+	}
 
+	event.dataTransfer.setData("text/plain", event.target.id);
+	event.dataTransfer.setDragImage(img, 0, 0);
+	// on drag it does the scale animation to the current target object
 	scaleAnimation(pigTarget);
 
 	console.log(pigTarget);

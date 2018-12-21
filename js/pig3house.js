@@ -118,16 +118,21 @@ document.addEventListener("dragover", function(event) {
 
 var img = new Image();
 img.src = 'imgs/blank.png';
+let isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 document.addEventListener("dragstart", function(event) {
-    updateMatCoords();
-    pigTarget = "#" + event.path[1].id;
-    event.dataTransfer.setData("text/plain", event.target.id);
+	updateMatCoords();
+	if (isFirefox) {
+		pigTarget = "#" + event.target.parentNode.id;
+	}else{
+		pigTarget = "#" + event.path[1].id;
+	}
 
-    event.dataTransfer.setDragImage(img, 0, 0);
+	event.dataTransfer.setData("text/plain", event.target.id);
+	event.dataTransfer.setDragImage(img, 0, 0);
+	// on drag it does the scale animation to the current target object
+	scaleAnimation(pigTarget);
 
-    scaleAnimation(pigTarget);
-    // on drag it does the scale animation to the current target object
-    console.log(pigTarget);
+	console.log(pigTarget);
 
 });
 // during the drag function

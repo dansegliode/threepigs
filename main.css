@@ -1,13 +1,23 @@
 * {
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	font-family: 'Didot', 'Arapey', Times, serif;
 }
 /* wrapper used mostly in the story sections for text placement and scroll icon placement */
 .wrapper {
 	height: 100vh;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
 	justify-content: space-between;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
 	align-items: center;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
 	flex-direction: column;
 }
 
@@ -17,8 +27,12 @@ body {
 	/* user select none makes it so the user cannot
 	highlight things and cause issues with
 	the interactivity */
+	-webkit-user-select: none;
+	-ms-user-select: none;
 	user-select: none;
 	-moz-user-select:none;
+	-webkit-transition: 1s ease-in-out;
+	-o-transition: 1s ease-in-out;
 	transition: 1s ease-in-out;
 }
 /* for fading between the light and dark sections of the story */
@@ -33,31 +47,45 @@ body {
 #fade1, #fade2, #fade3, #fade4, #fade5, #fade6 {
 	opacity: 1;
 	/* custom cubic bezier speed curve made with http://cubic-bezier.com */
+	-webkit-transition: 1s all cubic-bezier(0.400, 0.015, 0.530, 1.015);
+	-o-transition: 1s all cubic-bezier(0.400, 0.015, 0.530, 1.015);
 	transition: 1s all cubic-bezier(0.400, 0.015, 0.530, 1.015);
 }
 
 #fade2 {
+	-webkit-transition-delay: .2s;
+	-o-transition-delay: .2s;
 	transition-delay: .2s;
 }
 
 #fade3 {
+	-webkit-transition-delay: .5s;
+	-o-transition-delay: .5s;
 	transition-delay: .5s;
 }
 
 #fade4 {
+	-webkit-transition-delay: .8s;
+	-o-transition-delay: .8s;
 	transition-delay: .8s;
 }
 
 #fade5 {
+	-webkit-transition-delay: 1s;
+	-o-transition-delay: 1s;
 	transition-delay: 1s;
 }
 
 #fade6 {
+	-webkit-transition-delay: 2.5s;
+	-o-transition-delay: 2.5s;
 	transition-delay: 2.5s;
 }
 /* what the fades turn into from full opacity to none */
 #fade1.fade, #fade2.fade, #fade3.fade, #fade4.fade, #fade5.fade, #fade6.fade {
 	opacity: 0;
+	-webkit-transition: none;
+	-o-transition: none;
 	transition: none;
 }
 /* styling for the title "three little pigs" */
@@ -72,10 +100,13 @@ h1 {
 
 /* nav styling */
 nav {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 	margin-bottom: 40px;
 	max-width: 500px;
 	width: 80%;
+	-ms-flex-pack: distribute;
 	justify-content: space-around;
 }
 /* css reset for the p tag */
@@ -86,17 +117,28 @@ p {
 a {
 	text-decoration: none;
 	color: black;
+	-webkit-transition: .3s;
+	-o-transition: .3s;
 	transition: .3s;
 }
 /* placement for our start button */
 .beginButton{
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
 	flex-direction: column;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
 	align-items: center;
 }
 
 /* hover affordance animation */
 .begin:hover img{
+	-webkit-transform: scale(1.1);
+	-ms-transform: scale(1.1);
 	transform: scale(1.1);
 }
 
@@ -115,15 +157,23 @@ a:hover {
 	content: url(imgs/hay.svg);
 	opacity: 0;
 	position: absolute;
+	-webkit-transform: translate(-10px, -10px);
+	-ms-transform: translate(-10px, -10px);
 	transform: translate(-10px, -10px);
 	/* transition for only opacity and transform */
+	-webkit-transition: opacity .3s, -webkit-transform .3s;
+	transition: opacity .3s, -webkit-transform .3s;
+	-o-transition: opacity .3s, transform .3s;
 	transition: opacity .3s, transform .3s;
+	transition: opacity .3s, transform .3s, -webkit-transform .3s;
 	pointer-events: none;
 }
 /* the animation that brings the image into view */
 #pigOne:hover:before {
 	opacity: 1;
 	position: absolute;
+	-webkit-transform: translate(-10px, -50px);
+	-ms-transform: translate(-10px, -50px);
 	transform: translate(-10px, -50px);
 }
 
@@ -131,14 +181,22 @@ a:hover {
 	content: url(imgs/stick.svg);
 	opacity: 0;
 	position: absolute;
+	-webkit-transform: translate(-5px, -10px);
+	-ms-transform: translate(-5px, -10px);
 	transform: translate(-5px, -10px);
+	-webkit-transition: opacity .3s, -webkit-transform .3s;
+	transition: opacity .3s, -webkit-transform .3s;
+	-o-transition: opacity .3s, transform .3s;
 	transition: opacity .3s, transform .3s;
+	transition: opacity .3s, transform .3s, -webkit-transform .3s;
 	pointer-events: none;
 }
 
 #pigTwo:hover:before {
 	opacity: 1;
 	position: absolute;
+	-webkit-transform: translate(-5px, -50px);
+	-ms-transform: translate(-5px, -50px);
 	transform: translate(-5px, -50px);
 }
 
@@ -146,23 +204,35 @@ a:hover {
 	content: url(imgs/brick.svg);
 	opacity: 0;
 	position: absolute;
+	-webkit-transform: translate(-3px, -10px);
+	-ms-transform: translate(-3px, -10px);
 	transform: translate(-3px, -10px);
+	-webkit-transition: opacity .3s, -webkit-transform .3s;
+	transition: opacity .3s, -webkit-transform .3s;
+	-o-transition: opacity .3s, transform .3s;
 	transition: opacity .3s, transform .3s;
+	transition: opacity .3s, transform .3s, -webkit-transform .3s;
 	pointer-events: none;
 }
 
 #pigThree:hover:before {
 	opacity: 1;
 	position: absolute;
+	-webkit-transform: translate(-3px, -50px);
+	-ms-transform: translate(-3px, -50px);
 	transform: translate(-3px, -50px);
 }
 
 /* play button transitions */
 .playButton {
+	-webkit-transition: .3s;
+	-o-transition: .3s;
 	transition: .3s;
 }
 
 .playButton:hover {
+	-webkit-transform: scale(1.1);
+	-ms-transform: scale(1.1);
 	transform: scale(1.1);
 }
 /* setting a "variable" class for the use of gray */
@@ -174,9 +244,18 @@ a:hover {
 /* story text positioning */
 .sceneIntroContainer{
 	height: 100vh;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
 	flex-direction: column;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
 	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
 	justify-content: center;
 }
 /* story text formatting */
@@ -188,12 +267,20 @@ a:hover {
 	font-size: 1.2rem;
 	text-align: center;
 	font-family: "PT Serif", "Didot", serif;
+	-webkit-transform: translateY(-90px);
+	-ms-transform: translateY(-90px);
 	transform: translateY(-90px);
+	-webkit-transition: 2s ease-in !important;
+	-o-transition: 2s ease-in !important;
 	transition: 2s ease-in !important;
 }
 
 .storyFadeOut{
+	-webkit-transform: translateY(0px);
+	-ms-transform: translateY(0px);
 	transform: translateY(0px);
+	-webkit-transition: none;
+	-o-transition: none;
 	transition: none;
 }
 
@@ -214,6 +301,8 @@ a:hover {
 /* Radar Animation */
 /* the container for the beam */
 .line{
+	-webkit-transform: scale(-.5);
+	-ms-transform: scale(-.5);
 	transform: scale(-.5);
 	position: relative;
 
@@ -226,38 +315,63 @@ a:hover {
 	background-color: rgba(0, 0, 0, 0);
 	border: 2px solid rgba(253, 229, 107, 0.5);
 	border-radius: 100%;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	/* centering axis of transformation */
+	-webkit-transform-origin: center center;
+	-ms-transform-origin: center center;
 	transform-origin: center center;
+	-webkit-box-shadow: 0px 0px 5px #FDE56B;
 	box-shadow: 0px 0px 5px #FDE56B;
 }
 
 /* boing animation */
 /* animation used when picking up and placing objects */
 .boing {
+	-webkit-animation: boing .4s ease-in-out;
 	animation: boing .4s ease-in-out;
 }
 /* keyframes used to fine tune the look of the boing */
+@-webkit-keyframes boing {
+	0% {-webkit-transform: scale(1);transform: scale(1);}
+	33% {-webkit-transform: scale(1.1);transform: scale(1.1);}
+	66% {-webkit-transform: scale(.9);transform: scale(.9);}
+	100% {-webkit-transform: scale(1);transform: scale(1);}
+}
 @keyframes boing {
-	0% {transform: scale(1);}
-	33% {transform: scale(1.1);}
-	66% {transform: scale(.9);}
-	100% {transform: scale(1);}
+	0% {-webkit-transform: scale(1);transform: scale(1);}
+	33% {-webkit-transform: scale(1.1);transform: scale(1.1);}
+	66% {-webkit-transform: scale(.9);transform: scale(.9);}
+	100% {-webkit-transform: scale(1);transform: scale(1);}
 }
 
 /* scene all pigs */
 /* wrapper for placing objects */
 .allPigsWrapper{
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
 	justify-content: center;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
 	flex-direction: row;
 }
 /* positioning for the group of objects */
 .allPigMatGroups{
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-pack:justify;
+	-ms-flex-pack:justify;
 	justify-content:space-between;
 	width: 40vw;
 	height: 40vh;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
 	flex-direction: row;
 }
 /* sizing for the image */
@@ -267,8 +381,15 @@ a:hover {
 }
 /* placement of individual images */
 .pigMat{
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-pack:justify;
+	-ms-flex-pack:justify;
 	justify-content:space-between;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
 	flex-direction: column;
 }
 /* material sizing with pointer events none so the user cannot access the object and cause errors */
@@ -288,8 +409,14 @@ a:hover {
 
 .pigsAndMaterials{
 	height: 100vh;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
 	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
 	align-items: center;
 }
 
@@ -308,16 +435,31 @@ a:hover {
 /* scene_pig1house */
 /* positioning for the goal or gray materials that the user drag and drops into  */
 .grayMatCenter{
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 	height: 100vh;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
 	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
 	align-items: center;
 }
 /* individual placing */
 .grayMatGroup{
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
 	flex-direction: column;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
 	align-items: center;
+	-webkit-box-pack:justify;
+	-ms-flex-pack:justify;
 	justify-content:space-between;
 	height: auto;
 	pointer-events: none;
@@ -351,6 +493,8 @@ a:hover {
 .wolfChar {
 	position: absolute;
 	left: 30%;
+	-webkit-transform: translate(0,0);
+	-ms-transform: translate(0,0);
 	transform: translate(0,0);
 }
 /* pig and wolf sizing */
@@ -361,41 +505,65 @@ a:hover {
 /* animation css for the scattering*/
 .grayMat{
 	position: relative;
+	-webkit-transform: translate(0,0);
+	-ms-transform: translate(0,0);
 	transform: translate(0,0);
+	-webkit-transition: 1.5s ease-out;
+	-o-transition: 1.5s ease-out;
 	transition: 1.5s ease-out;
 }
 /* individual places for the objects to scatter to */
 .staticMat1Transition {
 	position: relative;
+	-webkit-transform: translate(5vw,-10vh) rotate(20deg);
+	-ms-transform: translate(5vw,-10vh) rotate(20deg);
 	transform: translate(5vw,-10vh) rotate(20deg);
 }
 
 .staticMat2Transition {
 	position: relative;
+	-webkit-transform: rotate(-.45turn);
+	-ms-transform: rotate(-.45turn);
 	transform: rotate(-.45turn);
+	-webkit-transform: translate(30vw,-1vh) rotate(-75deg);
+	-ms-transform: translate(30vw,-1vh) rotate(-75deg);
 	transform: translate(30vw,-1vh) rotate(-75deg);
 }
 
 .staticMat3Transition {
 	position: relative;
+	-webkit-transform: rotate(.3turn);
+	-ms-transform: rotate(.3turn);
 	transform: rotate(.3turn);
+	-webkit-transform: translate(20vw,10vh) rotate(45deg);
+	-ms-transform: translate(20vw,10vh) rotate(45deg);
 	transform: translate(20vw,10vh) rotate(45deg);
 }
 /* wolf scatter animation css */
 .wolfScatter {
+	-webkit-animation: wolfFrames .6s ease-out;
 	animation: wolfFrames .6s ease-out;
 }
 
+@-webkit-keyframes wolfFrames {
+	0% {-webkit-transform: translate(0vw,0vh) rotate(0deg);transform: translate(0vw,0vh) rotate(0deg);}
+	100% {-webkit-transform: translate(-30vw,0vh) rotate(120deg);transform: translate(-30vw,0vh) rotate(120deg)}
+}
+
 @keyframes wolfFrames {
-	0% {transform: translate(0vw,0vh) rotate(0deg);}
-	100% {transform: translate(-30vw,0vh) rotate(120deg)}
+	0% {-webkit-transform: translate(0vw,0vh) rotate(0deg);transform: translate(0vw,0vh) rotate(0deg);}
+	100% {-webkit-transform: translate(-30vw,0vh) rotate(120deg);transform: translate(-30vw,0vh) rotate(120deg)}
 }
 #newWolf {
 	position: absolute;
+	-webkit-transform: translate(-30vw,0vh) rotate(120deg);
+	-ms-transform: translate(-30vw,0vh) rotate(120deg);
 	transform: translate(-30vw,0vh) rotate(120deg)
 }
 .wolfScatterTransition{
 	position: absolute;
+	-webkit-transform: translate(0vw,0vh) rotate(0deg);
+	-ms-transform: translate(0vw,0vh) rotate(0deg);
 	transform: translate(0vw,0vh) rotate(0deg);
 	/* transition: 1.5s transform ease-out; */
 }
@@ -412,8 +580,15 @@ a:hover {
 /* documentation css */
 
 .docWrapper {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
 	align-items: center;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
 	flex-direction: column;
 	height: auto;
 }
@@ -453,6 +628,7 @@ h2:first-of-type {
 }
 
 .back {
+	-ms-flex-item-align: start;
 	align-self: flex-start;
 	margin: 30px 0px 0px 30px;
 	position: fixed;

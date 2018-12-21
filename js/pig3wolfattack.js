@@ -108,15 +108,17 @@ var img = new Image();
 img.src = 'imgs/blank.png';
 
 document.addEventListener("dragstart", function (event) {
-    //updateMatCoords();
-    pigTarget = "#" + event.path[1].id;
-    event.dataTransfer.setData("text/plain", event.target.id);
-    event.dataTransfer.setDragImage(img, 0, 0);
-	// on drag it does the scale animation to the current target object
+		if (isFirefox) {
+			pigTarget = "#" + event.target.parentNode.id;
+		}else{
+			pigTarget = "#" + event.path[1].id;
+		}
 
-    scaleAnimation(pigTarget);
-
-
+		event.dataTransfer.setData("text/plain", event.target.id);
+		event.dataTransfer.setDragImage(img, 0, 0);
+		// on drag it does the scale animation to the current target object
+		scaleAnimation(pigTarget);
+		console.log(pigTarget);
 });
 
 document.addEventListener("drag", function (event) {

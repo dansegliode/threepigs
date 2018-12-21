@@ -98,16 +98,21 @@ document.addEventListener("dragover", function (event) {
 // adapted from https://kryogenix.org/code/browser/custom-drag-image.html
 // creates a new image, sets the image to be the blank image, then an event listener that sets the image when the cursor starts dragging
 var img = new Image();
+let isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 img.src = 'imgs/blank.png';
 
 document.addEventListener("dragstart", function (event) {
-	//updateMatCoords();
-	pigTarget = "#" + event.path[1].id;
+	if (isFirefox) {
+		pigTarget = "#" + event.target.parentNode.id;
+	}else{
+		pigTarget = "#" + event.path[1].id;
+	}
+
 	event.dataTransfer.setData("text/plain", event.target.id);
 	event.dataTransfer.setDragImage(img, 0, 0);
 	// on drag it does the scale animation to the current target object
 	scaleAnimation(pigTarget);
-
+	console.log(pigTarget);
 });
 // during the drag function
 document.addEventListener("drag", function (event) {
