@@ -100,9 +100,11 @@ document.addEventListener("dragover", function (event) {
 var img = new Image();
 let isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 img.src = 'imgs/blank.png';
-
+var isSafari = navigator.userAgent.toLowerCase().indexOf('safari/') > -1;
 document.addEventListener("dragstart", function (event) {
 	if (isFirefox) {
+		pigTarget = "#" + event.target.parentNode.id;
+	}else if(isSafari){
 		pigTarget = "#" + event.target.parentNode.id;
 	}else{
 		pigTarget = "#" + event.path[1].id;
@@ -119,7 +121,7 @@ document.addEventListener("drag", function (event) {
 	//updateMatCoords();
 	// checks if the target is a certain pig and if it is pig1Draggable then checks to make sure it is not any of the objects
 	if ((pigTarget == "#draggableMat1") && wolfDraggable) {
-			// then sets the css of that target to the position of the mouse minus some pixels to place it better on screen
+		// then sets the css of that target to the position of the mouse minus some pixels to place it better on screen
 		$(`${pigTarget}`).css({
 			position: "absolute",
 			left: mouseXPos - 40,

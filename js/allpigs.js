@@ -115,9 +115,12 @@ document.addEventListener("dragover", function (event) {
 // creates a new image, sets the image to be the blank image, then an event listener that sets the image when the cursor starts dragging
 var img = new Image();
 img.src = 'imgs/blank.png';
+var isSafari = navigator.userAgent.toLowerCase().indexOf('safari/') > -1;
 document.addEventListener("dragstart", function (event) {
 	updateMatCoords();
 	if (isFirefox) {
+		pigTarget = "#" + event.target.parentNode.id;
+	}else if(isSafari){
 		pigTarget = "#" + event.target.parentNode.id;
 	}else{
 		pigTarget = "#" + event.path[1].id;
