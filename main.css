@@ -267,18 +267,14 @@ a:hover {
 	font-size: 1.2rem;
 	text-align: center;
 	font-family: "PT Serif", "Didot", serif;
-	-webkit-transform: translateY(-90px);
-	-ms-transform: translateY(-90px);
-	transform: translateY(-90px);
+	
 	-webkit-transition: 2s ease-in !important;
 	-o-transition: 2s ease-in !important;
 	transition: 2s ease-in !important;
 }
 
 .storyFadeOut{
-	-webkit-transform: translateY(0px);
-	-ms-transform: translateY(0px);
-	transform: translateY(0px);
+
 	-webkit-transition: none;
 	-o-transition: none;
 	transition: none;
